@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@atlaskit/banner": "^11.0.0",
+    "@atlaskit/button": "^14.0.0",
+    "@atlaskit/modal-dialog": "^11.0.1",
+    "@fluentui/react": "^7.123.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "evergreen-ui": "^4.28.1",
+    "gestalt": "^6.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-virtualized": "^9.21.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,5 +37,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "is_js": "^0.9.0",
+    "primeflex": "^2.0.0-rc.1",
+    "primeicons": "^4.0.0",
+    "primereact": "^4.2.2",
+    "react-hook-form": "^6.0.7",
+    "react-native": "^0.63.1",
+    "react-native-passmeter": "0.0.5",
+    "react-transition-group": "^4.4.1",
+    "rsuite": "^4.8.0",
+    "shards-react": "^1.0.3",
+    "zxcvbn": "^4.4.2"
   }
 }

@@ -1,24 +1,37 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { SignInButton } from './components'
+import { VipBadge } from './components'
+import { PrimeButton } from './components'
+import { GestAltTest } from './components'
+import { UsersList } from './components'
+import { CancelButton } from './components'
+import { ConfirmButton } from './components'
+import { IsTest } from './hooks'
+import {PassMaster} from './hooks'
+
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h3 style={{ color: 'white' }}>To jest przykładowa aplikcja</h3>
+        <p>Pokazuje działanie React Redux</p>
       </header>
+      <div>
+        <SignInButton />
+        <VipBadge />
+        <PrimeButton />
+        <GestAltTest />
+        <UsersList />
+        <CancelButton />
+        <ConfirmButton />
+        <IsTest />
+        <PassMaster />
+      </div>
     </div>
   );
 }
