@@ -9,7 +9,7 @@ const Resolver = () => {
         // efekt polega na zaktualizowaniu tytuł dokumentu korzystając z interfejsu API przeglądarki
         document.title = `Kliknięto ${count} razy`;
         setRender(render + 1);
-    }, [count]);
+    }, [count]); // ponieważ useEffect nie reaguje na render, to nie wpada w pętle
 
     return (
         <Fragment>
@@ -17,7 +17,7 @@ const Resolver = () => {
             <p>Kliknięto {count} razy</p>
             <button className="btn btn-primary" onClick={() => setCount(count + 1)}>
                 {`wyrenderowano ${render}`}
-      </button>
+            </button>
         </Fragment>
     );
 }

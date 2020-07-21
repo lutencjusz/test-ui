@@ -39,16 +39,20 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "is_js": "^0.9.0",
+    "jquery": "^1.9.1",
     "primeflex": "^2.0.0-rc.1",
     "primeicons": "^4.0.0",
     "primereact": "^4.2.2",
     "react-hook-form": "^6.0.7",
-    "react-native": "^0.63.1",
     "react-native-passmeter": "0.0.5",
     "react-transition-group": "^4.4.1",
     "rsuite": "^4.8.0",
     "shards-react": "^1.0.3",
+    "styled-components": "^3.4.10",
     "zxcvbn": "^4.4.2"
   }
 }
