@@ -9,7 +9,8 @@ import { UsersList } from './components'
 import { CancelButton } from './components'
 import { ConfirmButton } from './components'
 import { IsTest } from './hooks'
-import {PassMaster} from './hooks'
+import { PassMaster } from './hooks'
+import { Resolver } from './hooks'
 
 //import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -31,6 +32,7 @@ function App() {
         <ConfirmButton />
         <IsTest />
         <PassMaster />
+        <Resolver />
       </div>
     </div>
   );
