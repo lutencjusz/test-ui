@@ -5,7 +5,7 @@ import { LoadingIndicator } from "../../components";
 const FetchDictionary = () => {
   const [todos, setTodos] = useState([]);
   // A. can put `suspense: true` here
-  const { get, response } = useFetch();
+  const { get, response, error } = useFetch();
 
   const loadInitialFetch = async () => {
     const todos = await get("/DEV/api/v1/dictionary");
@@ -17,17 +17,22 @@ const FetchDictionary = () => {
     loadInitialFetch();
   }, []);
 
+  const handleClick = async () => {
+    const todos = await get(`/DEV/api/v1/table?name="categories"`);
+    console.log({ response, error });
+    if (await response.data.errorType) {
+      setTodos([]);
+    } else if (await response.ok) {
+      setTodos(todos);
+    }
+  };
+
   return (
     <Fragment>
       {todos.map((todo) => (
         <div key={todo.id}>{todo.name}</div>
       ))}
-      <button
-        className="btn btn-primary"
-        onClick={async () =>
-          setTodos(await get(`/DEV/api/v1/table?name="categories"`))
-        }
-      >
+      <button className="btn btn-primary" onClick={handleClick}>
         Pobierz Categories
       </button>
     </Fragment>
