@@ -5,3 +5,4 @@ export { default as GestAltTest} from './gestalt';
 export { default as UsersList} from './reactVirtualized';
 export { default as CancelButton} from './evergreen';
 export { default as ConfirmButton} from './atlaskit';
+export { default as LoadingIndicator} from './loadingIndicator';

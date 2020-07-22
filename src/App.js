@@ -11,6 +11,7 @@ import { ConfirmButton } from './components'
 import { IsTest } from './hooks'
 import { PassMaster } from './hooks'
 import { Resolver } from './hooks'
+import { GetData } from './hooks'
 
 //import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -33,6 +34,7 @@ function App() {
         <IsTest />
         <PassMaster />
         <Resolver />
+        <GetData />
       </div>
     </div>
   );
