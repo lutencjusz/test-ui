@@ -15,7 +15,7 @@ const FetchDictionary = () => {
   // componentDidMount
   useEffect(() => {
     loadInitialFetch();
-  }, []);
+  }, [loadInitialFetch]);
 
   return (
     <Fragment>
