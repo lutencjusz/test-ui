@@ -13,6 +13,7 @@ import { PassMaster } from './hooks'
 import { Resolver } from './hooks'
 import { GetData } from './hooks'
 import { DemoCookie } from './hooks'
+import { DemoLatest } from './hooks'
 
 //import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -36,7 +37,8 @@ function App() {
         <PassMaster />
         <Resolver />
         <GetData />
-        <DemoCookie/>
+        <DemoCookie />
+        <DemoLatest />
       </div>
     </div>
   );

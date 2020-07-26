@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useCookie } from "react-use";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const DemoCookie = () => {
   const [show, setShow] = useState(false);
