@@ -52,6 +52,7 @@
     "react-hook-form": "^6.0.7",
     "react-native-passmeter": "0.0.5",
     "react-transition-group": "^4.4.1",
+    "react-use": "^15.3.3",
     "rsuite": "^4.8.0",
     "shards-react": "^1.0.3",
     "styled-components": "^3.4.10",
