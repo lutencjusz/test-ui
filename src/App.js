@@ -14,6 +14,7 @@ import { Resolver } from './hooks'
 import { GetData } from './hooks'
 import { DemoCookie } from './hooks'
 import { DemoLatest } from './hooks'
+import { DemoUseCss } from './hooks'
 
 //import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -39,6 +40,7 @@ function App() {
         <GetData />
         <DemoCookie />
         <DemoLatest />
+        <DemoUseCss />
       </div>
     </div>
   );

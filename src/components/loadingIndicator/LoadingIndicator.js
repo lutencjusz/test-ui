@@ -36,12 +36,12 @@ const Content = styled.div`
         animation-delay: -0.5s;
     }
 `
-function LoadingIndicator () {
+function LoadingIndicator ({className={}}) {
     return (
-        <Root>
-            <Content>
+        <Root >
+            <Content className={className}>
             </Content>
-            <Content>
+            <Content className={className}>
             </Content>
         </Root>
     )
