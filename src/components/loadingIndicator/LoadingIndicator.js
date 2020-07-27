@@ -1,7 +1,8 @@
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const ldsEllipsis = keyframes`
+function LoadingIndicator({ className }) {
+    const ldsEllipsis = keyframes`
     0% {
         top: 36px;
         left: 36px;
@@ -18,14 +19,14 @@ const ldsEllipsis = keyframes`
     }
 `
 
-const Root = styled.div`
+    const Root = styled.div`
     display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
 `
 
-const Content = styled.div`
+    const Content = styled.div`
     position: absolute;
     background: rgb(222, 220, 220);
     border: 4px solid #5dba5d;
@@ -36,9 +37,8 @@ const Content = styled.div`
         animation-delay: -0.5s;
     }
 `
-function LoadingIndicator ({className={}}) {
     return (
-        <Root >
+        <Root>
             <Content className={className}>
             </Content>
             <Content className={className}>
