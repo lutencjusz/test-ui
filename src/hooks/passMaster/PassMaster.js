@@ -117,7 +117,7 @@ const PassMaster = () => {
               onChange={e => _checkSetPassword(e.target.value)}
               ref={register({
                 required: "Wymagane",
-                validate: value => pass >= 1,
+                validate: () => pass >= 1,
               })}
               required
             />

@@ -9,18 +9,18 @@ class SuspenseErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     // Zaktualizuj stan, aby następny render pokazał zastępcze UI.
     return { hasError: true };
   }
 
-  componentDidCatch(error) {
+  componentDidCatch() {
     // Możesz także zalogować błąd do zewnętrznego serwisu raportowania błędów
     // logErrorToMyService(error, errorInfo);
     // console.log(error);
   }
 
-  tryAgain = () => {
+  tryAgain() {
     // await queryCache.refetchQueries ('budget');
     this.setState({ hasError: false }) //wystarczy zmienić flagę i sprawdzanie będzie ponowione
   }
@@ -30,7 +30,7 @@ class SuspenseErrorBoundary extends React.Component {
       {this.state.hasError ? (
         <div>
           <h4>Nie mogę pobrać danych...</h4>
-          <button className="button_w button_w_red" onClick={() => this.tryAgain()}>Spróbuj jeszcze raz</button>
+          <button className="button_w button_w_red" onClick={() => this.tryAgain}>Spróbuj jeszcze raz</button>
         </div>
       ) : (
           <Fragment>
