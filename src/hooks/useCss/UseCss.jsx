@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import { useCss, useToggle } from "react-use";
 import { LoadingIndicator } from "../../components";
 import Button from "react-bootstrap/Button";
@@ -19,9 +20,9 @@ const DemoUseCss = () => {
   });
 
   return (
-    <Fragment>
+    <div className="frame">
       <br />
-      <h1 className={className} style={{ marginLeft:'25%', width: '50%' }}>
+      <h1 className={className} style={{ marginLeft: "25%", width: "50%" }}>
         UseCss
       </h1>
       {on && <LoadingIndicator className={className} />}
@@ -74,7 +75,7 @@ const DemoUseCss = () => {
           {on ? "off" : "on"}
         </Button>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, Fragment, useRef } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect, useRef } from "react";
 import useFetch, { Provider } from "use-http";
 import { SuspenseErrorBoundary } from "../../components";
 import Toast from "react-bootstrap/Toast";
@@ -148,14 +149,14 @@ const GetData = () => {
   };
 
   return (
-    <Fragment>
+    <div className="frame">
       <h1>useFetch</h1>
       <Provider url="https://jsonplaceholder.typicode.com" options={options}>
         <SuspenseErrorBoundary>
           <FetchDictionary />
         </SuspenseErrorBoundary>
       </Provider>
-    </Fragment>
+    </div>
   );
 };
 

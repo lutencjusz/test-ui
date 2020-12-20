@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+/* eslint-disable no-unused-vars */
+import React from "react";
 import "react-virtualized/styles.css";
 import { List } from "react-virtualized";
 
@@ -35,7 +36,7 @@ export default function UsersList() {
     );
   }
   return (
-    <Fragment>
+    <div className="frame">
       <h1>React-virtualized</h1>
       <div className="row">
         <div className="col-4"></div>
@@ -50,6 +51,6 @@ export default function UsersList() {
           />
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

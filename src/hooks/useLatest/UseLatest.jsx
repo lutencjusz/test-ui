@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useLatest, useToggle } from "react-use";
 import Button from "react-bootstrap/Button";
@@ -18,7 +20,7 @@ const DemoLatest = () => {
   };
 
   return (
-    <div>
+    <div className="frame">
       <h1>useLatest i useToggle</h1>
       <p>Kliknąłeś {count} razy...</p>
       <Button onClick={() => setCount(count + 1)}>

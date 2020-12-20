@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+/* eslint-disable no-unused-vars */
+import React from "react";
 import { Button, Heading, Modal, Box, Layer } from "gestalt";
 import "gestalt/dist/gestalt.css";
 
 export default function GestAltTest() {
   const [selected, setSelected] = React.useState(false);
   return (
-    <Fragment>
+    <div className="frame">
       <Heading align="center" size="lg">
         GestAlt
       </Heading>
@@ -17,24 +18,24 @@ export default function GestAltTest() {
         onClick={() => {
           setSelected(!selected);
         }}
-        text={selected ? "Zaznczony" : "Odznaczony"}
+        text={selected ? "Zaznaczony" : "Odznaczony"}
       />
       {selected ? (
-      <Layer>
-        <Modal
-          accessibilityModalLabel="View default padding and styling"
-          heading="Small modal"
-          closeOnOutsideClick={true}
-          onDismiss={() => setSelected(false)}
-          footer={<Heading size="sm">Footer</Heading>}
-          size="sm"
-        >
-          <Box padding={8}>
-            <Heading size="md">Children</Heading>
-          </Box>
-        </Modal>
-      </Layer>) :null
-}
-    </Fragment>
+        <Layer>
+          <Modal
+            accessibilityModalLabel="View default padding and styling"
+            heading="Small modal"
+            closeOnOutsideClick={true}
+            onDismiss={() => setSelected(false)}
+            footer={<Heading size="sm">Footer</Heading>}
+            size="sm"
+          >
+            <Box padding={8}>
+              <Heading size="md">Children</Heading>
+            </Box>
+          </Modal>
+        </Layer>
+      ) : null}
+    </div>
   );
 }

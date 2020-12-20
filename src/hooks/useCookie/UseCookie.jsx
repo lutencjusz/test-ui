@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useCookie } from "react-use";
 import Button from "react-bootstrap/Button";
@@ -28,9 +29,14 @@ const DemoCookie = () => {
 
   // animation={false} - animacje nie działają, więc musi być false
   return (
-    <div>
-      <Modal show={show} onHide={handleClose} aria-labelledby="ModalHeader" animation={false}>
-        <Modal.Header id='ModalHeader' closeButton>
+    <div className="frame">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        aria-labelledby="ModalHeader"
+        animation={false}
+      >
+        <Modal.Header id="ModalHeader" closeButton>
           <Modal.Title>Cookies</Modal.Title>
         </Modal.Header>
         <Modal.Body>Ogładając dalej stronę akceptujesz cookie!</Modal.Body>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -8,6 +9,7 @@ import { GestAltTest } from './components'
 import { UsersList } from './components'
 import { CancelButton } from './components'
 import { ConfirmButton } from './components'
+import { DemoLanguage } from './components'
 import { IsTest } from './hooks'
 import { PassMaster } from './hooks'
 import { Resolver } from './hooks'
@@ -23,7 +25,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h3 style={{ color: 'white' }}>To jest przykładowa aplikcja</h3>
+        <h3 style={{ color: 'white' }}>To jest przykładowa aplikacja</h3>
         <p>Pokazuje działanie React Redux</p>
       </header>
       <div>
@@ -41,6 +43,7 @@ function App() {
         <DemoCookie />
         <DemoLatest />
         <DemoUseCss />
+        <DemoLanguage />
       </div>
     </div>
   );

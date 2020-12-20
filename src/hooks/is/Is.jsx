@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import React, { Fragment, useState } from "react";
 import Is from "is_js";
-import { styles } from '../../constaints'
+import { styles } from "../../constaints";
 
 const IsTest = () => {
   const [x, setX] = useState();
@@ -44,7 +46,7 @@ const IsTest = () => {
   };
 
   return (
-    <Fragment>
+    <div className="frame">
       <container style={styles.form_input}>
         <h1>Test Is</h1>
         <input
@@ -60,7 +62,7 @@ const IsTest = () => {
         />
         <p>{x}</p>
       </container>
-    </Fragment>
+    </div>
   );
 };
 

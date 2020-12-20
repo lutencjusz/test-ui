@@ -1,4 +1,5 @@
-import React, { useState, Fragment } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import zxcvbn from "zxcvbn";
 import Is from "is_js";
 import { useForm } from 'react-hook-form';
@@ -53,7 +54,7 @@ const PassMaster = () => {
   };
 
   return (
-    <Fragment>
+    <div className="frame">
       <h1>Formularz useForm</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" noValidate>
         <div className="form-row" style={styles.form_grups}>
@@ -131,7 +132,7 @@ const PassMaster = () => {
         </div>
         <button type="submit" className="btn btn-primary">Zatwierdź</button>
       </form>
-    </Fragment>
+    </div>
   );
 };
 
