@@ -43,7 +43,7 @@ function App() {
         <DemoCookie />
         <DemoLatest />
         <DemoUseCss />
-        <DemoLanguage />
+        {/*<DemoLanguage />*/}
       </div>
     </div>
   );

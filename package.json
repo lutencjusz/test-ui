@@ -11,6 +11,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
+    "easy-soap-request": "^4.1.1",
     "evergreen-ui": "^4.28.1",
     "gestalt": "^6.2.0",
     "is-js": "^0.1.1",
@@ -22,6 +23,7 @@
     "react-scripts": "^4.0.1",
     "react-virtualized": "^9.21.2",
     "serve": "^11.3.2",
+    "tinysoap": "^1.2.0",
     "typescript": "^4.1.3"
   },
   "scripts": {

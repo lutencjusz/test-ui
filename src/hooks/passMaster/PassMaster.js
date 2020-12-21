@@ -4,8 +4,9 @@ import zxcvbn from "zxcvbn";
 import Is from "is_js";
 import { useForm } from 'react-hook-form';
 import { styles } from '../../constaints'
+import { toaster } from "evergreen-ui";
 
-const strenghtPassword = ['Zbyt słabe', "Może być", "Mocne", "Bardzo mocne", "Ekstra mocne"]
+const strenghtPassword = ['Zbyt słabe', "Może być", "Mocne", "Bardzo mocne", "Ekstra mocne", "Super extra mocne"]
 
 const PassMaster = () => {
 
@@ -13,6 +14,7 @@ const PassMaster = () => {
 
   const [pass, setPassword] = useState(-1);
   const [control, setControl] = useState({});
+  const [formAccept, setFormAccept] = useState(false);
 
   const _checkSetField = (
     field,
@@ -51,11 +53,18 @@ const PassMaster = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    setFormAccept(true);
+    toaster.success("Formularz wysłany...", {
+      description: `na adres: ${data.email}`,
+      duration: 3,
+      id: "forbidden-action",
+    })
   };
 
   return (
     <div className="frame">
       <h1>Formularz useForm</h1>
+      <h6>kontrola hasła za pomocą "zxcvbn", formatki poprzez react-hook-form</h6>
       <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" noValidate>
         <div className="form-row" style={styles.form_grups}>
           <div className="col-md-5 mb-3">
@@ -98,7 +107,7 @@ const PassMaster = () => {
                 required: "Wymagane",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Niewłąściwy format email"
+                  message: "Niewłaściwy format email"
                 }
               })}
               required
@@ -132,6 +141,11 @@ const PassMaster = () => {
         </div>
         <button type="submit" className="btn btn-primary">Zatwierdź</button>
       </form>
+      <h6>
+        <br />
+        {formAccept && "Formularz został wysłany..."}
+      </h6>
+
     </div>
   );
 };
