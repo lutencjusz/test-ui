@@ -1,59 +1,58 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import useFetch from "use-http";
+import React, { useState } from "react";
+import initialData from "./initial-data";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
+const reorder = (list, fromIndex, toIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(fromIndex, 1);
+  result.splice(toIndex, 0, removed);
+  return result;
+};
 
 export default function DemoLanguage() {
-  const url =
-    "https://wyszukiwarkaregontest.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc";
+  console.log({ initialData });
+  const [words, setWords] = useState(initialData);
 
-  const xml =
-    '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://CIS/BIR/PUBL/2014/07"> ' +
-    '<soap:Header xmlns:wsa="http://www.w3.org/2005/08/addressing"> ' +
-    "<wsa:To>https://wyszukiwarkaregontest.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc</wsa:To> " +
-    "<wsa:Action>http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/Zaloguj</wsa:Action> " +
-    "</soap:Header> " +
-    "<soap:Body> " +
-    "<ns:Zaloguj> " +
-    "<ns:pKluczUzytkownika>abcde12345abcde12345</ns:pKluczUzytkownika> " +
-    "</ns:Zaloguj> " +
-    "</soap:Body> " +
-    "</soap:Envelope>";
+  function onDragEnd(result) {
+    if (!result.destination) return;
 
-  const options = {
-    data: xml,
-    method: "POST",
-    mode: "no-cors",
-    cache: "no-cache",
-    referrerPolicy: "same-origin",
-    init: {
-      headers: {
-        "Content-Type": "application/xop+xml",
-        Origin: "*",
-      },
-    },
-  };
-  const { post, response, loading, error, data = [] } = useFetch(url, options);
+    const fromIndex = result.source.index;
+    const toIndex = result.destination.index;
 
-  const callWebService = async () => {
-    console.log("Wysłany komunikat!");
-    const res = await post({
-      data: xml,
-    });
-    if (response.ok) console.log({ res });
-  };
+    if (fromIndex === toIndex) return;
 
+    const newWords = {
+      elements: { ...words.elements },
+      elementsOrder: reorder(words.elementsOrder, fromIndex, toIndex),
+    };
+    setWords(newWords);
+  }
   return (
     <div className="frame">
-      <h1>Demo wiersz</h1>
-      <h6>Przykładowy komponent DemoLanguage, który można wykorzystać do</h6>
-      <button type="button" onClick={() => callWebService()}>
-        Wywołaj SOAP
-      </button>
-      <div>
-        {error && `Error!: ${error}`}
-        {loading && "Loading..."}
-        {data && `Data: ${data}`}
-      </div>
+      <h1>react-beautiful-dnd</h1>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="list">
+          {(provided) => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {words.elementsOrder.map((key, index) => (
+                <Draggable key={key} draggableId={key} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      {words.elements[key].name}
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }
