@@ -6,5 +6,5 @@ export { default as UsersList } from './reactVirtualized';
 export { default as CancelButton } from './evergreen';
 export { default as ConfirmButton } from './atlaskit';
 export { default as LoadingIndicator } from './loadingIndicator';
-export { default as DemoLanguage } from './demoLanguage';
+export { default as DnD } from './DnD';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';

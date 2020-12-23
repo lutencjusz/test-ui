@@ -9,7 +9,7 @@ import { GestAltTest } from './components'
 import { UsersList } from './components'
 import { CancelButton } from './components'
 import { ConfirmButton } from './components'
-import { DemoLanguage } from './components'
+import { DnD } from './components'
 import { IsTest } from './hooks'
 import { PassMaster } from './hooks'
 import { Resolver } from './hooks'
@@ -43,7 +43,7 @@ function App() {
         <DemoCookie />
         <DemoLatest />
         <DemoUseCss />
-        <DemoLanguage />
+        <DnD />
       </div>
     </div>
   );
