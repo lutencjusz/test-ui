@@ -9,13 +9,6 @@ const Container = styled.div`
   display: flex;
 `;
 
-const reorder = (list, fromIndex, toIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(fromIndex, 1);
-  result.splice(toIndex, 0, removed);
-  return result;
-};
-
 export default function DnD() {
   const [stateEl, setStateEl] = useState(initialData);
 
@@ -53,8 +46,8 @@ export default function DnD() {
           [newColumn.id]: newColumn,
         },
       };
-
       setStateEl(newState);
+      return;
     }
 
     // Moving from one list to another
@@ -80,6 +73,7 @@ export default function DnD() {
         [newFinish.id]: newFinish,
       },
     };
+    console.log(newState.columns);
     setStateEl(newState);
   };
   const onDragStart = (start, provided) => {
@@ -96,7 +90,6 @@ export default function DnD() {
         {stateEl.columnOrder.map((columnId) => {
           const column = stateEl.columns[columnId];
           const tasks = column.taskIds.map((taskId) => stateEl.tasks[taskId]);
-
           return <Column key={column.id} column={column} tasks={tasks} />;
         })}
       </Container>
