@@ -7,6 +7,7 @@ import Column from "./Column";
 
 const Container = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 export default function DnD() {
@@ -85,14 +86,24 @@ export default function DnD() {
   };
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Container>
-        {stateEl.columnOrder.map((columnId) => {
-          const column = stateEl.columns[columnId];
-          const tasks = column.taskIds.map((taskId) => stateEl.tasks[taskId]);
-          return <Column key={column.id} column={column} tasks={tasks} />;
-        })}
-      </Container>
-    </DragDropContext>
+    <div className="frame">
+      <h1>Drag and Drop</h1>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Container>
+          {stateEl.columnOrder.map((columnId) => {
+            const column = stateEl.columns[columnId];
+            const tasks = column.taskIds.map((taskId) => stateEl.tasks[taskId]);
+            return (
+              <Column
+                key={column.id}
+                column={column}
+                tasks={tasks}
+                message={stateEl.columns["column-3"].taskIds}
+              />
+            );
+          })}
+        </Container>
+      </DragDropContext>
+    </div>
   );
 }
