@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import initialData from "./initial-data";
 import { DragDropContext } from "react-beautiful-dnd";
@@ -76,13 +75,6 @@ export default function DnD() {
     };
     console.log(newState.columns);
     setStateEl(newState);
-  };
-  const onDragStart = (start, provided) => {
-    console.log({ start });
-  };
-
-  const onDragUpdate = (update, provided) => {
-    console.log({ update });
   };
 
   return (

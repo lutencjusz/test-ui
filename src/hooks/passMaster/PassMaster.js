@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import zxcvbn from "zxcvbn";
 import Is from "is_js";
@@ -23,8 +22,8 @@ const PassMaster = () => {
   ) => {
     errors[field] ?
       setControl({
-        ...control,
-        [field]: classInvalid,
+              ...control,
+               [field]: classInvalid,
       }) :
       setControl({
         ...control,

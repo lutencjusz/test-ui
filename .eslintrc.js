@@ -1,26 +1,30 @@
 module.exports = {
-    "env": {
-        "es6": true,
-        "node": true
+    env: {
+        browser: true,
+        es2021: true,
+        jest: true,
     },
-    "extends": "eslint:recommended",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "react-hooks"
+    extends: [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
     ],
-    "rules": {
-        "react-hooks/rules-of-hooks": "error", // Sprawdza stosowanie zasad hooków
-        "react-hooks/exhaustive-deps": "warn" // Sprawdza zależności efektów
-    }
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
+        ecmaVersion: 12,
+        sourceType: "module",
+    },
+    plugins: ["react"],
+    rules: {
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": 0,
+        "prettier/prettier": [
+            "error",
+            {
+                endOfLine: "auto",
+            },
+        ],
+    },
 };
