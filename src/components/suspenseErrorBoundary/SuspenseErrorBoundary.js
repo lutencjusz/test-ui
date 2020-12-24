@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { LoadingIndicator } from '../../components';
-import './SuspenseErrorBoundary.css'
+import './SuspenseErrorBoundary.css';
 
 class SuspenseErrorBoundary extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -22,23 +21,27 @@ class SuspenseErrorBoundary extends React.Component {
 
   tryAgain() {
     // await queryCache.refetchQueries ('budget');
-    this.setState({ hasError: false }) //wystarczy zmienić flagę i sprawdzanie będzie ponowione
+    this.setState({ hasError: false }); //wystarczy zmienić flagę i sprawdzanie będzie ponowione
   }
 
   render() {
-    return <React.Suspense fallback={<LoadingIndicator />}>
-      {this.state.hasError ? (
-        <div>
-          <h4>Nie mogę pobrać danych...</h4>
-          <button className="button_w button_w_red" onClick={() => this.tryAgain}>Spróbuj jeszcze raz</button>
-        </div>
-      ) : (
-          <Fragment>
-            {this.props.children}
-          </Fragment>
-        )
-      }
-    </React.Suspense>
+    return (
+      <React.Suspense fallback={<LoadingIndicator />}>
+        {this.state.hasError ? (
+          <div>
+            <h4>Nie mogę pobrać danych...</h4>
+            <button
+              className="button_w button_w_red"
+              onClick={() => this.tryAgain}
+            >
+              Spróbuj jeszcze raz
+            </button>
+          </div>
+        ) : (
+          <Fragment>{this.props.children}</Fragment>
+        )}
+      </React.Suspense>
+    );
   }
 }
 

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Task from "./Task.jsx";
-import { Droppable } from "react-beautiful-dnd";
-import { Button } from "shards-react";
-import { toaster } from "evergreen-ui";
+import React from 'react';
+import styled from 'styled-components';
+import Task from './Task.jsx';
+import { Droppable } from 'react-beautiful-dnd';
+import { Button } from 'shards-react';
+import { toaster } from 'evergreen-ui';
 
 const Container = styled.div`
   margin: 8px;
@@ -20,7 +20,7 @@ const Title = styled.h3`
 const TaskList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
-  background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "white")}
+  background-color: ${(props) => (props.isDraggingOver ? 'skyblue' : 'white')}
   flex-grow: 1;
   min-height: 100px;
 `;
@@ -31,10 +31,10 @@ const ButtonStyle = styled.div`
 
 export default class Column extends React.Component {
   sendFinal(message) {
-    toaster.success("Wysłano konfigurację...", {
+    toaster.success('Wysłano konfigurację...', {
       description: message,
       duration: 3,
-      id: "forbidden-action",
+      id: 'forbidden-action',
     });
   }
 
@@ -56,7 +56,7 @@ export default class Column extends React.Component {
             </TaskList>
           )}
         </Droppable>
-        {this.props.column.id === "column-3" ? (
+        {this.props.column.id === 'column-3' ? (
           <ButtonStyle>
             <Button block onClick={() => this.sendFinal(this.props.message)}>
               Wyślij

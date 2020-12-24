@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-
-import React, { Fragment } from "react";
-import { Button, toaster } from "evergreen-ui";
+import React from 'react';
+import { Button, toaster } from 'evergreen-ui';
 
 export default function CancelButton() {
   return (
@@ -11,10 +9,10 @@ export default function CancelButton() {
         marginRight={16}
         appearance="primary"
         onClick={() =>
-          toaster.success("Wysłano informacje o sukcesie", {
-            description: "To jest informacja z description",
+          toaster.success('Wysłano informacje o sukcesie', {
+            description: 'To jest informacja z description',
             duration: 5,
-            id: "forbidden-action",
+            id: 'forbidden-action',
           })
         }
       >

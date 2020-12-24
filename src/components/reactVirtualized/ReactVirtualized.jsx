@@ -1,28 +1,27 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import "react-virtualized/styles.css";
-import { List } from "react-virtualized";
+import React from 'react';
+import 'react-virtualized/styles.css';
+import { List } from 'react-virtualized';
 
 export default function UsersList() {
   const list = [
-    "Michał",
-    "Tadek",
-    "Ola",
-    "Michał",
-    "Tadek",
-    "Ola",
-    "Michał",
-    "Tadek",
-    "Ola",
-    "Michał",
-    "Tadek",
-    "Ola",
-    "Michał",
-    "Tadek",
-    "Ola",
-    "Michał",
-    "Tadek",
-    "Ola",
+    'Michał',
+    'Tadek',
+    'Ola',
+    'Michał',
+    'Tadek',
+    'Ola',
+    'Michał',
+    'Tadek',
+    'Ola',
+    'Michał',
+    'Tadek',
+    'Ola',
+    'Michał',
+    'Tadek',
+    'Ola',
+    'Michał',
+    'Tadek',
+    'Ola',
   ];
   function _rowRenderer({
     key, // Unique key within array of rows
@@ -47,7 +46,7 @@ export default function UsersList() {
             rowCount={list.length}
             rowHeight={20}
             rowRenderer={_rowRenderer}
-            style={{ border: "1px solid #DDD", marginLeft: "15" }}
+            style={{ border: '1px solid #DDD', marginLeft: '15' }}
           />
         </div>
       </div>

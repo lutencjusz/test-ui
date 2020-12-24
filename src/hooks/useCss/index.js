@@ -1,1 +1,1 @@
-export { default } from './UseCss.jsx'
+export { default } from './UseCss.jsx';

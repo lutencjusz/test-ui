@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { Button, Heading, Modal, Box, Layer } from "gestalt";
-import "gestalt/dist/gestalt.css";
+import React from 'react';
+import { Button, Heading, Modal, Box, Layer } from 'gestalt';
+import 'gestalt/dist/gestalt.css';
 
 export default function GestAltTest() {
   const [selected, setSelected] = React.useState(false);
@@ -18,7 +17,7 @@ export default function GestAltTest() {
         onClick={() => {
           setSelected(!selected);
         }}
-        text={selected ? "Zaznaczony" : "Odznaczony"}
+        text={selected ? 'Zaznaczony' : 'Odznaczony'}
       />
       {selected ? (
         <Layer>

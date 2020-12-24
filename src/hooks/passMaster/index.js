@@ -1,1 +1,1 @@
-export { default} from './PassMaster';
+export { default } from './PassMaster';

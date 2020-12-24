@@ -1,14 +1,21 @@
-import React, { useState } from "react";
-import zxcvbn from "zxcvbn";
-import Is from "is_js";
+/* eslint-disable react/no-unescaped-entities */
+import React, { useState } from 'react';
+import zxcvbn from 'zxcvbn';
+import Is from 'is_js';
 import { useForm } from 'react-hook-form';
-import { styles } from '../../constaints'
-import { toaster } from "evergreen-ui";
+import { styles } from '../../constaints';
+import { toaster } from 'evergreen-ui';
 
-const strenghtPassword = ['Zbyt słabe', "Może być", "Mocne", "Bardzo mocne", "Ekstra mocne", "Super extra mocne"]
+const strenghtPassword = [
+  'Zbyt słabe',
+  'Może być',
+  'Mocne',
+  'Bardzo mocne',
+  'Ekstra mocne',
+  'Super extra mocne',
+];
 
 const PassMaster = () => {
-
   const { register, handleSubmit, errors } = useForm();
 
   const [pass, setPassword] = useState(-1);
@@ -20,51 +27,56 @@ const PassMaster = () => {
     classInvalid = 'is-invalid',
     classValid = 'is-valid'
   ) => {
-    errors[field] ?
-      setControl({
-              ...control,
-               [field]: classInvalid,
-      }) :
-      setControl({
-        ...control,
-        [field]: classValid,
-      })
-  }
+    errors[field]
+      ? setControl({
+          ...control,
+          [field]: classInvalid,
+        })
+      : setControl({
+          ...control,
+          [field]: classValid,
+        });
+  };
 
   const _checkSetPassword = (password) => {
-    !Is.empty(password) ?
-      setPassword(zxcvbn(password).score) :
-      setPassword(-1)
-    !Is.empty(password) && zxcvbn(password).score < 1 ?
+    !Is.empty(password) ? setPassword(zxcvbn(password).score) : setPassword(-1);
+    !Is.empty(password) && zxcvbn(password).score < 1
+      ? setControl({
+          ...control,
+          password: 'is-invalid',
+        })
+      : setControl({
+          ...control,
+          password: 'is-valid',
+        });
+    Is.empty(password) &&
       setControl({
         ...control,
-        password: 'is-invalid',
-      }) :
-      setControl({
-        ...control,
-        password: 'is-valid',
-      })
-    Is.empty(password) && setControl({
-      ...control,
-      password: '',
-    })
-  }
+        password: '',
+      });
+  };
 
   const onSubmit = (data) => {
     console.log(data);
     setFormAccept(true);
-    toaster.success("Formularz wysłany...", {
+    toaster.success('Formularz wysłany...', {
       description: `na adres: ${data.email}`,
       duration: 3,
-      id: "forbidden-action",
-    })
+      id: 'forbidden-action',
+    });
   };
 
   return (
     <div className="frame">
       <h1>Formularz useForm</h1>
-      <h6>kontrola hasła za pomocą "zxcvbn", formatki poprzez react-hook-form</h6>
-      <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" noValidate>
+      <h6>
+        kontrola hasła za pomocą "zxcvbn", formatki poprzez react-hook-form
+      </h6>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="needs-validation"
+        noValidate
+      >
         <div className="form-row" style={styles.form_grups}>
           <div className="col-md-5 mb-3">
             <label htmlFor="name">Nazwa:</label>
@@ -84,8 +96,8 @@ const PassMaster = () => {
               className={`form-control ${control.creditCard}`}
               onChange={() => _checkSetField('creditCard', 'is-invalid', '')}
               ref={register({
-                required: "Wymagane",
-                validate: value => Is.creditCard(value),
+                required: 'Wymagane',
+                validate: (value) => Is.creditCard(value),
               })}
               required
             />
@@ -103,11 +115,11 @@ const PassMaster = () => {
               className={`form-control ${control.email}`}
               onChange={() => _checkSetField('email', 'is-invalid', '')}
               ref={register({
-                required: "Wymagane",
+                required: 'Wymagane',
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Niewłaściwy format email"
-                }
+                  message: 'Niewłaściwy format email',
+                },
               })}
               required
             />
@@ -123,28 +135,25 @@ const PassMaster = () => {
               name="password"
               className={`form-control ${control.password}`}
               placeholder="Wprowadź hasło..."
-              onChange={e => _checkSetPassword(e.target.value)}
+              onChange={(e) => _checkSetPassword(e.target.value)}
               ref={register({
-                required: "Wymagane",
+                required: 'Wymagane',
                 validate: () => pass >= 1,
               })}
               required
             />
-            <div className="invalid-feedback">
-              {strenghtPassword[pass]}
-            </div>
-            <div className="valid-feedback">
-              {strenghtPassword[pass]}
-            </div>
+            <div className="invalid-feedback">{strenghtPassword[pass]}</div>
+            <div className="valid-feedback">{strenghtPassword[pass]}</div>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">Zatwierdź</button>
+        <button type="submit" className="btn btn-primary">
+          Zatwierdź
+        </button>
       </form>
       <h6>
         <br />
-        {formAccept && "Formularz został wysłany..."}
+        {formAccept && 'Formularz został wysłany...'}
       </h6>
-
     </div>
   );
 };

@@ -1,14 +1,13 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import { useCookie } from "react-use";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import React, { useState, useEffect } from 'react';
+import { useCookie } from 'react-use';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const DemoCookie = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [value, updateCookie, deleteCookie] = useCookie("demo-cookie");
+  const [value, updateCookie, deleteCookie] = useCookie('demo-cookie');
   const [counter, setCounter] = useState(1);
 
   useEffect(() => {

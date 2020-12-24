@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import initialData from "./initial-data";
-import { DragDropContext } from "react-beautiful-dnd";
-import styled from "styled-components";
-import Column from "./Column";
+import React, { useState } from 'react';
+import initialData from './initial-data';
+import { DragDropContext } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+import Column from './Column';
 
 const Container = styled.div`
   display: flex;
@@ -90,7 +90,7 @@ export default function DnD() {
                 key={column.id}
                 column={column}
                 tasks={tasks}
-                message={stateEl.columns["column-3"].taskIds}
+                message={stateEl.columns['column-3'].taskIds}
               />
             );
           })}

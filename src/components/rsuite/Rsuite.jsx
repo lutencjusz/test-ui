@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { Button, Notification, ButtonToolbar } from "rsuite";
-import "rsuite/dist/styles/rsuite-default.css";
+import React from 'react';
+import { Button, Notification, ButtonToolbar } from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css';
 
 function open(funcName) {
   Notification[funcName]({
@@ -14,7 +13,7 @@ export default function SignInButton() {
   return (
     <ButtonToolbar className="frame">
       <h1>React Suite</h1>
-      <Button appearance="primary" onClick={() => open("success")}>
+      <Button appearance="primary" onClick={() => open('success')}>
         Sign In
       </Button>
     </ButtonToolbar>

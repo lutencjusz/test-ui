@@ -1,1 +1,1 @@
-export {default as SuspenseErrorBoundary} from './SuspenseErrorBoundary.js'
+export { default as SuspenseErrorBoundary } from './SuspenseErrorBoundary.js';

@@ -1,1 +1,1 @@
-export {default} from './useEffect'
+export { default } from './useEffect';

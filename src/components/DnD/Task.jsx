@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import styled from "styled-components";
-import { Draggable } from "react-beautiful-dnd";
+import React from 'react';
+import styled from 'styled-components';
+import { Draggable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -11,15 +11,15 @@ const Container = styled.div`
   transition: background-color 0.2s ease;
   background-color: ${(props) =>
     props.isDragDisabled
-      ? "lightgrey"
+      ? 'lightgrey'
       : props.isDragging
-      ? "lightgreen"
-      : "white"};
+      ? 'lightgreen'
+      : 'white'};
 `;
 
 export default class Task extends React.Component {
   render() {
-    const isDragDisabled = this.props.task.id === "task-1";
+    const isDragDisabled = this.props.task.id === 'task-1';
     return (
       <Draggable
         draggableId={this.props.task.id}

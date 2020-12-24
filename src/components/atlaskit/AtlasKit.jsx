@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import Button from "@atlaskit/button";
-import Banner from "@atlaskit/banner";
+import React, { useState } from 'react';
+import Button from '@atlaskit/button';
+import Banner from '@atlaskit/banner';
 
 export default function ConfirmButton() {
   const [isOpen, setIsOpen] = useState(true);

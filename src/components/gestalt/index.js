@@ -1,1 +1,1 @@
-export { default} from './GestAlt.jsx'
+export { default } from './GestAlt.jsx';
