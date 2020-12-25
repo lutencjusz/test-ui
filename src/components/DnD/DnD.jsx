@@ -7,10 +7,22 @@ import Column from './Column';
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export default function DnD() {
   const [stateEl, setStateEl] = useState(initialData);
+
+  const setCategory = (category) => {
+    console.log({ stateEl });
+    const newState = {
+      ...stateEl,
+      categoryFilter: category,
+    };
+    setStateEl(newState);
+    console.log('Kategoria', category);
+    console.log({ newState });
+  };
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -91,6 +103,8 @@ export default function DnD() {
                 column={column}
                 tasks={tasks}
                 message={stateEl.columns['column-3'].taskIds}
+                categoryFilter={stateEl.categoryFilter}
+                setCategory={setCategory}
               />
             );
           })}

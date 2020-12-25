@@ -3,7 +3,7 @@ const styles = {
     width: '50%',
     marginLeft: '25%',
   },
-  form_grups: {
+  form_groups: {
     textAlign: 'left',
     width: '75%',
     marginLeft: '12.5%',

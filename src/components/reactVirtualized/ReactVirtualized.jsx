@@ -41,7 +41,7 @@ export default function UsersList() {
         <div className="col-4"></div>
         <div className="col-6">
           <List
-            width={300}
+            width={100}
             height={100}
             rowCount={list.length}
             rowHeight={20}

@@ -19,7 +19,7 @@ const Container = styled.div`
 
 export default class Task extends React.Component {
   render() {
-    const isDragDisabled = this.props.task.id === 'task-1';
+    const isDragDisabled = this.props.task.isDragDisabled === true;
     return (
       <Draggable
         draggableId={this.props.task.id}
@@ -33,6 +33,7 @@ export default class Task extends React.Component {
             innerRef={provided.innerRef}
             isDragging={snapshot.isDragging}
             isDragDisabled={isDragDisabled}
+            onClick={() => this.props.setCategory(this.props.task.content)}
           >
             {this.props.task.content}
           </Container>

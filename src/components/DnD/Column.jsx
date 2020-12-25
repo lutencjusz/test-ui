@@ -42,16 +42,32 @@ export default class Column extends React.Component {
     return (
       <Container>
         <Title>{this.props.column.title}</Title>
-        <Droppable droppableId={this.props.column.id} type="TASK">
+        <Droppable
+          droppableId={this.props.column.id}
+          isDropDisabled={this.props.column.isDropDisabled}
+          type="TASK"
+        >
           {(provided, snapshot) => (
             <TaskList
               innerRef={provided.innerRef}
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
             >
-              {this.props.tasks.map((task, index) => (
-                <Task key={task.id} task={task} index={index} />
-              ))}
+              {this.props.tasks
+                .filter(
+                  (task) =>
+                    this.props.column.id.includes('column-1') ||
+                    this.props.column.id.includes('column-3') ||
+                    task.category.includes(this.props.categoryFilter)
+                )
+                .map((task, index) => (
+                  <Task
+                    key={task.id}
+                    task={task}
+                    index={index}
+                    setCategory={this.props.setCategory}
+                  />
+                ))}
               {provided.placeholder}
             </TaskList>
           )}
