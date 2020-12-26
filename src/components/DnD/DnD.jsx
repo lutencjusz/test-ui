@@ -12,16 +12,20 @@ const Container = styled.div`
 
 export default function DnD() {
   const [stateEl, setStateEl] = useState(initialData);
+  const [dragId, setDragId] = useState(); // służy do przenoszenia informacji, który element został podniesiony
 
   const setCategory = (category) => {
-    console.log({ stateEl });
+    console.log({ category });
+    if (category === undefined) return;
     const newState = {
       ...stateEl,
       categoryFilter: category,
     };
     setStateEl(newState);
-    console.log('Kategoria', category);
-    console.log({ newState });
+  };
+
+  const onBeforeCapture = (beforeCapture) => {
+    setDragId(beforeCapture.draggableId);
   };
 
   const onDragEnd = (result) => {
@@ -64,11 +68,14 @@ export default function DnD() {
 
     // Moving from one list to another
     const startTaskIds = Array.from(start.taskIds);
-    startTaskIds.splice(source.index, 1);
+    //startTaskIds.splice(source.index, 1);
+    startTaskIds.splice(startTaskIds.indexOf(dragId), 1); // ustawia prawidłowy index, bo filtr powoduje, że niektóre są niewidoczne
     const newStart = {
       ...start,
       taskIds: startTaskIds,
     };
+
+    console.log({ source });
 
     const finishTaskIds = Array.from(finish.taskIds);
     finishTaskIds.splice(destination.index, 0, draggableId);
@@ -76,6 +83,8 @@ export default function DnD() {
       ...finish,
       taskIds: finishTaskIds,
     };
+
+    console.log({ destination });
 
     const newState = {
       ...stateEl,
@@ -92,7 +101,7 @@ export default function DnD() {
   return (
     <div className="frame">
       <h1>Drag and Drop</h1>
-      <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={onDragEnd} onBeforeCapture={onBeforeCapture}>
         <Container>
           {stateEl.columnOrder.map((columnId) => {
             const column = stateEl.columns[columnId];

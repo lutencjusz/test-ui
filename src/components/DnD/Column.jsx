@@ -58,6 +58,7 @@ export default class Column extends React.Component {
                   (task) =>
                     this.props.column.id.includes('column-1') ||
                     this.props.column.id.includes('column-3') ||
+                    task.category.includes('*') ||
                     task.category.includes(this.props.categoryFilter)
                 )
                 .map((task, index) => (
@@ -66,6 +67,7 @@ export default class Column extends React.Component {
                     task={task}
                     index={index}
                     setCategory={this.props.setCategory}
+                    setCategoryElements={task.setCategoryElements}
                   />
                 ))}
               {provided.placeholder}
