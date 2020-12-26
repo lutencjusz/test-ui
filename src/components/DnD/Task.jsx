@@ -2,6 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCoffee,
+  faTimes,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
   border-radius: 2px;
@@ -12,6 +18,19 @@ const Container = styled.div`
     props.isDragDisabled ? 'white' : props.isDragging ? 'lightgreen' : 'white'};
   border: 1px solid
     ${(props) => (props.isDragDisabled ? 'cadetblue' : 'lightgrey')};
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Handle = styled.button`
+  width: 20px;
+  height: 20px;
+  right: 8px;
+  background-color: red;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 12px;
+  color: white;
 `;
 
 export default class Task extends React.Component {
@@ -35,6 +54,11 @@ export default class Task extends React.Component {
             }
           >
             {this.props.task.content}
+            {this.props.availableDelete ? (
+              <Handle onClick={() => this.props.deleteTask(this.props.task.id)}>
+                <FontAwesomeIcon icon={faTimes} />
+              </Handle>
+            ) : null}
           </Container>
         )}
       </Draggable>

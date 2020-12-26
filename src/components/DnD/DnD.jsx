@@ -3,6 +3,7 @@ import initialData from './initial-data';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import Column from './Column';
+//import _ from 'lodash';
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +16,6 @@ export default function DnD() {
   const [dragId, setDragId] = useState(); // służy do przenoszenia informacji, który element został podniesiony
 
   const setCategory = (category) => {
-    console.log({ category });
     if (category === undefined) return;
     const newState = {
       ...stateEl,
@@ -26,6 +26,36 @@ export default function DnD() {
 
   const onBeforeCapture = (beforeCapture) => {
     setDragId(beforeCapture.draggableId);
+  };
+
+  const deleteTask = (taskId) => {
+    const newDeletedTaskIdsArray = Object.values({
+      ...stateEl.columns['column-3'].taskIds,
+    });
+    const newDeletedTaskIdsArrayId = newDeletedTaskIdsArray.indexOf(taskId);
+    newDeletedTaskIdsArray.splice(newDeletedTaskIdsArrayId, 1);
+
+    let newAddTaskIdsArray = Object.values({
+      ...stateEl.columns['column-2'].taskIds,
+    });
+    newAddTaskIdsArray.splice(0, 0, taskId);
+    newAddTaskIdsArray.sort();
+
+    const newState = {
+      ...stateEl,
+      columns: {
+        ...stateEl.columns,
+        ['column-2']: {
+          ...stateEl.columns['column-2'],
+          taskIds: newAddTaskIdsArray,
+        },
+        ['column-3']: {
+          ...stateEl.columns['column-3'],
+          taskIds: newDeletedTaskIdsArray,
+        },
+      },
+    };
+    setStateEl(newState);
   };
 
   const onDragEnd = (result) => {
@@ -114,6 +144,7 @@ export default function DnD() {
                 message={stateEl.columns['column-3'].taskIds}
                 categoryFilter={stateEl.categoryFilter}
                 setCategory={setCategory}
+                deleteTask={deleteTask}
               />
             );
           })}

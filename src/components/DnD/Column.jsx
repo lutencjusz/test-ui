@@ -68,6 +68,10 @@ export default class Column extends React.Component {
                     index={index}
                     setCategory={this.props.setCategory}
                     setCategoryElements={task.setCategoryElements}
+                    availableDelete={
+                      this.props.column.id.includes('column-3') ? true : false
+                    }
+                    deleteTask={this.props.deleteTask}
                   />
                 ))}
               {provided.placeholder}
