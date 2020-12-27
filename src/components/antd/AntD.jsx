@@ -13,6 +13,7 @@ import {
   Row,
   Col,
 } from 'antd';
+import { toaster } from 'evergreen-ui';
 
 export default function AntD() {
   const [show, setShow] = useState(false);
@@ -24,25 +25,34 @@ export default function AntD() {
     wrapperCol: { span: 12 },
   };
   const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { offset: 4, span: 12 },
   };
 
   const onGenderChange = (value) => {
     switch (value) {
-      case 'male':
+      case 'mężczyzna':
         form.setFieldsValue({ note: 'Witam pana!' });
         return;
-      case 'female':
+      case 'kobieta':
         form.setFieldsValue({ note: 'Witam panią!' });
         return;
-      case 'other':
+      case 'inna płeć':
         form.setFieldsValue({ note: 'Witam inną płeć!' });
         return;
     }
   };
 
   const onFinish = (values) => {
-    console.log(values);
+    console.log({ values });
+    toaster.success('Formularz wysłany...', {
+      description: `z danymi: informacja "${values.note}"${
+        values.customizeGender
+          ? ', inna płeć: ' + values.customizeGender
+          : ', płeć: ' + values.gender
+      }`,
+      duration: 3,
+      id: 'forbidden-action',
+    });
   };
 
   const onReset = () => {
@@ -72,9 +82,13 @@ export default function AntD() {
       <h1>Ant Design</h1>
       <div>
         <Row justify="left">
-          <Col span={12} style={{ textAlign: 'right' }}>
+          <Col
+            span={11}
+            style={{ textAlign: 'right', lineHeight: '2', color: 'black' }}
+          >
             Wprowadź swoją datę:
           </Col>
+          <Col span={1}></Col>
           <Col span={12} style={{ textAlign: 'left' }}>
             <DatePicker />
           </Col>
@@ -125,9 +139,9 @@ export default function AntD() {
             onChange={onGenderChange}
             allowClear
           >
-            <Option value="male">mężczyzna</Option>
-            <Option value="female">kobieta</Option>
-            <Option value="other">inna płeć</Option>
+            <Option value="mężczyzna">mężczyzna</Option>
+            <Option value="kobieta">kobieta</Option>
+            <Option value="inna płeć">inna płeć</Option>
           </Select>
         </Form.Item>
         <Form.Item
@@ -137,7 +151,7 @@ export default function AntD() {
           }
         >
           {({ getFieldValue }) => {
-            return getFieldValue('gender') === 'other' ? (
+            return getFieldValue('gender') === 'inna płeć' ? (
               <Form.Item
                 name="customizeGender"
                 label="Inna płeć"
@@ -148,7 +162,7 @@ export default function AntD() {
             ) : null;
           }}
         </Form.Item>
-        <Form.Item {...tailLayout}>
+        <Button.Group {...tailLayout}>
           <Space>
             <Button type="primary" htmlType="submit">
               Zatwierdź
@@ -160,8 +174,9 @@ export default function AntD() {
               Wypełnij domyślnie
             </Button>
           </Space>
-        </Form.Item>
+        </Button.Group>
       </Form>
+      <br />
     </div>
   );
 }

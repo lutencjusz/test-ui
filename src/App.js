@@ -11,6 +11,7 @@ import { ConfirmButton } from './components';
 import { AntD } from './components';
 import { DnD } from './components';
 import { Victory } from './components';
+import { Recharts } from './components';
 import { IsTest } from './hooks';
 import { PassMaster } from './hooks';
 import { Resolver } from './hooks';
@@ -47,6 +48,7 @@ function App() {
         <DnD />
         <AntD />
         <Victory />
+        <Recharts />
       </div>
     </div>
   );

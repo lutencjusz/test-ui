@@ -9,4 +9,5 @@ export { default as LoadingIndicator } from './loadingIndicator';
 export { default as DnD } from './DnD';
 export { default as AntD } from './antd';
 export { default as Victory } from './victory';
+export { default as Recharts } from './recharts';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';
