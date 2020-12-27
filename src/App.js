@@ -10,6 +10,7 @@ import { CancelButton } from './components';
 import { ConfirmButton } from './components';
 import { AntD } from './components';
 import { DnD } from './components';
+import { Victory } from './components';
 import { IsTest } from './hooks';
 import { PassMaster } from './hooks';
 import { Resolver } from './hooks';
@@ -45,6 +46,7 @@ function App() {
         <DemoUseCss />
         <DnD />
         <AntD />
+        <Victory />
       </div>
     </div>
   );

@@ -8,4 +8,5 @@ export { default as ConfirmButton } from './atlaskit';
 export { default as LoadingIndicator } from './loadingIndicator';
 export { default as DnD } from './DnD';
 export { default as AntD } from './antd';
+export { default as Victory } from './victory';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';
