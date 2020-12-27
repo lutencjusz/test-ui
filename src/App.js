@@ -8,6 +8,7 @@ import { GestAltTest } from './components';
 import { UsersList } from './components';
 import { CancelButton } from './components';
 import { ConfirmButton } from './components';
+import { AntD } from './components';
 import { DnD } from './components';
 import { IsTest } from './hooks';
 import { PassMaster } from './hooks';
@@ -43,6 +44,7 @@ function App() {
         <DemoLatest />
         <DemoUseCss />
         <DnD />
+        <AntD />
       </div>
     </div>
   );
