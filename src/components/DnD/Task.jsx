@@ -50,7 +50,11 @@ export default class Task extends React.Component {
             isDragging={snapshot.isDragging}
             isDragDisabled={isDragDisabled}
             onClick={() =>
-              this.props.setCategory(this.props.task.setCategoryElements)
+              this.props.setCategory(
+                this.props.task.setCategoryElements,
+                this.props.task.id,
+                this.props.columnId
+              )
             }
           >
             {this.props.task.content}

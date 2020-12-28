@@ -3,6 +3,7 @@ import initialData from './initial-data';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import Column from './Column';
+import FormAttributes from './FormAttributes';
 //import _ from 'lodash';
 
 const Container = styled.div`
@@ -13,19 +14,38 @@ const Container = styled.div`
 
 export default function DnD() {
   const [stateEl, setStateEl] = useState(initialData);
-  const [dragId, setDragId] = useState(); // służy do przenoszenia informacji, który element został podniesiony
+  const [dragId, setDragId] = useState(undefined); // służy do przenoszenia informacji, który element został podniesiony
+  const [formState, setFormState] = useState({ state: false, taskId: null });
 
-  const setCategory = (category) => {
-    if (category === undefined) return;
-    const newState = {
-      ...stateEl,
-      categoryFilter: category,
-    };
-    setStateEl(newState);
+  const setCategory = (category, taskId, columnId) => {
+    if (category === undefined) {
+      if (columnId.includes('column-3')) {
+        setFormState({
+          state: true,
+          taskId,
+        });
+        return;
+      }
+    } else if (columnId.includes('column-1')) {
+      const newState = {
+        ...stateEl,
+        categoryFilter: category,
+      };
+      setStateEl(newState);
+    }
+
+    setFormState({
+      ...formState,
+      state: false,
+    });
   };
 
   const onBeforeCapture = (beforeCapture) => {
     setDragId(beforeCapture.draggableId);
+    setFormState({
+      ...formState,
+      state: false,
+    });
   };
 
   const deleteTask = (taskId) => {
@@ -56,6 +76,10 @@ export default function DnD() {
       },
     };
     setStateEl(newState);
+    setFormState({
+      ...formState,
+      state: false,
+    });
   };
 
   const onDragEnd = (result) => {
@@ -150,6 +174,11 @@ export default function DnD() {
           })}
         </Container>
       </DragDropContext>
+      {formState.state ? (
+        <FormAttributes formState={formState} attributes={stateEl.attributes} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
