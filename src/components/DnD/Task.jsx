@@ -22,7 +22,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Handle = styled.button`
+const Handle = styled.div`
   width: 20px;
   height: 20px;
   right: 8px;
@@ -31,6 +31,8 @@ const Handle = styled.button`
   margin-right: 8px;
   font-size: 12px;
   color: white;
+  cursor: pointer;
+  z-index: 1;
 `;
 
 export default class Task extends React.Component {

@@ -12,6 +12,8 @@ import { AntD } from './components';
 import { DnD } from './components';
 import { Victory } from './components';
 import { Recharts } from './components';
+import { StyledContentLoader } from './components';
+import { ReactNil } from './components';
 import { IsTest } from './hooks';
 import { PassMaster } from './hooks';
 import { Resolver } from './hooks';
@@ -49,6 +51,8 @@ function App() {
         <AntD />
         <Victory />
         <Recharts />
+        <StyledContentLoader />
+        <ReactNil />
       </div>
     </div>
   );

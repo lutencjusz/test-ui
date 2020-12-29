@@ -5,8 +5,15 @@ const styles = {
   },
   form_groups: {
     textAlign: 'left',
-    width: '75%',
-    marginLeft: '12.5%',
+    width: '50%',
+    marginLeft: '25%',
+  },
+  component: {
+    display: 'flex',
+    'justify-content': 'space-around',
+  },
+  componentItem: {
+    'flex-basis': '50vh',
   },
 };
 

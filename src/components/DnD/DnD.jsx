@@ -17,8 +17,11 @@ export default function DnD() {
   const [dragId, setDragId] = useState(undefined); // służy do przenoszenia informacji, który element został podniesiony
   const [formState, setFormState] = useState({ state: false, taskId: null });
 
-  const setCategory = (category, taskId, columnId) => {
-    if (category === undefined) {
+  const setCategory = (setCategoryElements, taskId, columnId) => {
+    console.log(
+      `Uruchomiony setCategory ${setCategoryElements} ${taskId} ${columnId}`
+    );
+    if (setCategoryElements === undefined) {
       if (columnId.includes('column-3')) {
         setFormState({
           state: true,
@@ -29,7 +32,7 @@ export default function DnD() {
     } else if (columnId.includes('column-1')) {
       const newState = {
         ...stateEl,
-        categoryFilter: category,
+        categoryFilter: setCategoryElements,
       };
       setStateEl(newState);
     }
@@ -49,6 +52,7 @@ export default function DnD() {
   };
 
   const deleteTask = (taskId) => {
+    console.log('Uruchomiony deleteTask');
     const newDeletedTaskIdsArray = Object.values({
       ...stateEl.columns['column-3'].taskIds,
     });
@@ -129,16 +133,12 @@ export default function DnD() {
       taskIds: startTaskIds,
     };
 
-    console.log({ source });
-
     const finishTaskIds = Array.from(finish.taskIds);
     finishTaskIds.splice(destination.index, 0, draggableId);
     const newFinish = {
       ...finish,
       taskIds: finishTaskIds,
     };
-
-    console.log({ destination });
 
     const newState = {
       ...stateEl,
@@ -148,8 +148,11 @@ export default function DnD() {
         [newFinish.id]: newFinish,
       },
     };
-    console.log(newState.columns);
     setStateEl(newState);
+    setFormState({
+      state: true,
+      taskId: dragId,
+    });
   };
 
   return (

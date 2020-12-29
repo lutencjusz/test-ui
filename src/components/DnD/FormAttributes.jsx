@@ -41,12 +41,10 @@ export default function FormAttributes(props) {
         noValidate
       >
         <div className="form-row" style={styles.form_groups}>
-          <h3
-            style={{ textAlign: 'left', marginTop: 20 }}
-            className="col-md-10 mb-"
-          >
+          <h3 style={{ marginTop: 20 }} className="col-md-10">
             Uzupełnij atrybuty
           </h3>
+          <h6 className="col-md-10 mb-3">{taskId}</h6>
         </div>
 
         {attr[taskId].map((task) => {
@@ -58,7 +56,7 @@ export default function FormAttributes(props) {
                   id={task}
                   ref={register}
                   name={task}
-                  className={`form-control`}
+                  className={`form-control ${control.name}`}
                   onChange={() => _checkSetField({ task }, 'is-invalid', '')}
                 />
               </div>
