@@ -40,7 +40,7 @@ const initialData = {
         "task-1": ["quantity", "price"],
         "task-2": ["quantity", "price"],
         "task-3": ["quantity", "price"],
-        "task-4": ["quantity", "price"],
+        "task-4": ["atrybut4"],
         "task-5": ["quantity", "price"],
         "task-6": ["quantity", "price"],
         "task-7": ["quantity", "price"],
