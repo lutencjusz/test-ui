@@ -4,6 +4,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import Column from './Column';
 import FormAttributes from './FormAttributes';
+import { toaster } from 'evergreen-ui';
 //import _ from 'lodash';
 
 const Container = styled.div`
@@ -16,6 +17,16 @@ export default function DnD() {
   const [stateEl, setStateEl] = useState(initialData);
   const [dragId, setDragId] = useState(undefined); // służy do przenoszenia informacji, który element został podniesiony
   const [formState, setFormState] = useState({ state: false, taskId: null });
+
+  const submitAttributes = (taskId, data) => {
+    console.log({ data });
+    setFormState({ state: false, taskId: null });
+    toaster.success('Atrybuty uzupełnione', {
+      description: `${{ data }}`,
+      duration: 3,
+      id: 'forbidden-action',
+    });
+  };
 
   const setCategory = (setCategoryElements, taskId, columnId) => {
     console.log(
@@ -178,7 +189,11 @@ export default function DnD() {
         </Container>
       </DragDropContext>
       {formState.state ? (
-        <FormAttributes formState={formState} attributes={stateEl.attributes} />
+        <FormAttributes
+          formState={formState}
+          attributes={stateEl.attributes}
+          submitAttributes={submitAttributes}
+        />
       ) : (
         ''
       )}

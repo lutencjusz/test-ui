@@ -1,13 +1,20 @@
 import React, { useState, Fragment } from 'react';
 import { useForm } from 'react-hook-form';
 import { styles } from '../../constaints';
-import { toaster } from 'evergreen-ui';
+import Is from 'is_js';
 
 export default function FormAttributes(props) {
-  const { register, handleSubmit, errors } = useForm();
-  const [control, setControl] = useState({});
   const { taskId } = props.formState;
   const attr = props.attributes;
+
+  const initialArray = [];
+  attr[taskId].map((at) => initialArray.push([at.name, at.value]));
+  const defaultValues = Object.fromEntries(initialArray);
+
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues,
+  });
+  const [control, setControl] = useState({});
 
   const _checkSetField = (
     field,
@@ -26,11 +33,14 @@ export default function FormAttributes(props) {
   };
 
   const onSubmit = (data) => {
-    toaster.success('Atrybuty uzupełnione', {
-      description: `${data}`,
-      duration: 3,
-      id: 'forbidden-action',
+    const dataValueArray = Object.values(data);
+    const newData = attr[taskId].map((a, index) => {
+      return {
+        ...a,
+        value: dataValueArray[index],
+      };
     });
+    props.submitAttributes(taskId, newData);
   };
 
   return (
@@ -49,16 +59,28 @@ export default function FormAttributes(props) {
 
         {attr[taskId].map((task) => {
           return (
-            <div key={task} className="form-row" style={styles.form_groups}>
+            <div
+              key={task.name}
+              className="form-row"
+              style={styles.form_groups}
+            >
               <div className="col-md-10 mb-2">
-                <label htmlFor={task}>{task}</label>
+                <label htmlFor={task.name}>{task.name}</label>
                 <input
-                  id={task}
-                  ref={register}
-                  name={task}
-                  className={`form-control ${control.name}`}
-                  onChange={() => _checkSetField({ task }, 'is-invalid', '')}
+                  id={task.name}
+                  name={task.name}
+                  type={task.type}
+                  className={`form-control ${control[task.name]}`}
+                  onChange={() =>
+                    _checkSetField(`${task.name}`, 'is-invalid', '')
+                  }
+                  ref={register({
+                    required: 'Wymagane',
+                    validate: (a) => Is.number(parseInt(a)),
+                  })}
+                  //required
                 />
+                <div className="invalid-feedback">Niewłaściwy format pola</div>
               </div>
             </div>
           );

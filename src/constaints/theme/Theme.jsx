@@ -11,9 +11,15 @@ const styles = {
   component: {
     display: 'flex',
     'justify-content': 'space-around',
+    'flex-wrap': 'wrap',
   },
   componentItem: {
-    'flex-basis': '50vh',
+    'flex-basis': '40vh',
+    color: 'cadetblue',
+  },
+  fontStyle: {
+    marginTop: '0px',
+    fontSize: '4em',
   },
 };
 

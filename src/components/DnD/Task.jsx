@@ -3,11 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCoffee,
-  faTimes,
-  faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
   border-radius: 2px;

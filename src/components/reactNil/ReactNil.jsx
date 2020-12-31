@@ -3,7 +3,7 @@ import { render } from 'react-nil';
 
 const Test = () => {
   const [active, set] = useState(false);
-  useEffect(() => void setInterval(() => set((a) => !a), 2000), []);
+  useEffect(() => void setInterval(() => set((a) => !a), 5000), []);
   console.log(active);
   return <h1>Test</h1>;
 };

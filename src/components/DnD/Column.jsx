@@ -73,6 +73,7 @@ export default class Column extends React.Component {
                       this.props.column.id.includes('column-3') ? true : false
                     }
                     deleteTask={this.props.deleteTask}
+                    submitAttributes={this.props.submitAttributes}
                   />
                 ))}
               {provided.placeholder}
