@@ -12,4 +12,5 @@ export { default as Victory } from './victory';
 export { default as Recharts } from './recharts';
 export { default as StyledContentLoader } from './styledContentLoader';
 export { default as ReactNil } from './reactNil';
+export { default as Windmill } from './windmill';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';

@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Windmill } from '@windmill/react-ui';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Windmill dark>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Windmill>,
   document.getElementById('root')
 );
 

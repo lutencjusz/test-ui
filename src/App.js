@@ -14,6 +14,7 @@ import { Victory } from './components';
 import { Recharts } from './components';
 import { StyledContentLoader } from './components';
 import { ReactNil } from './components';
+import { Windmill } from './components';
 import { IsTest } from './hooks';
 import { PassMaster } from './hooks';
 import { Resolver } from './hooks';
@@ -53,6 +54,7 @@ function App() {
         <Recharts />
         <StyledContentLoader />
         <ReactNil />
+        <Windmill />
       </div>
     </div>
   );

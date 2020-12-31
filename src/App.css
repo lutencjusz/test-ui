@@ -1,4 +1,7 @@
 @import '~antd/dist/antd.css';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 #components-form-demo-control-hooks .ant-btn {
   margin-right: 10vw;
