@@ -1,8 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { styles } from '../../constaints';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStarOfLife } from '@fortawesome/free-solid-svg-icons';
+import BorderWrapper from 'react-border-wrapper';
+
 import Is from 'is_js';
 
 export default function FormAttributes(props) {
@@ -46,16 +48,25 @@ export default function FormAttributes(props) {
   };
 
   return (
-    <Fragment>
+    <BorderWrapper
+      borderColour="#007bffa8"
+      borderWidth="5px"
+      borderRadius="15px"
+      borderType="solid"
+      innerPadding="10px"
+      rightPosition={0.1}
+      rightOffset="22px"
+      rightGap="4px"
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="needs-validation"
         noValidate
       >
         <div className="form-row" style={styles.form_groups}>
-          <h3 style={{ marginTop: 20 }} className="col-md-10">
+          <h4 style={{ marginTop: 20, width: '40vw' }} className="col-md-10">
             Uzupełnij atrybuty
-          </h3>
+          </h4>
           <h6 className="col-md-10 mb-3">{taskId}</h6>
         </div>
 
@@ -74,9 +85,7 @@ export default function FormAttributes(props) {
                       size="xs"
                       style={styles.formRequired}
                     />
-                  ) : (
-                    ''
-                  )}
+                  ) : null}
                   {task.name}
                 </label>
                 <input
@@ -110,11 +119,11 @@ export default function FormAttributes(props) {
         <button
           type="reset"
           className="btn btn-danger mb-4"
-          style={styles.formButton}
+          style={styles.formButtonRed}
         >
           Usuń
         </button>
       </form>
-    </Fragment>
+    </BorderWrapper>
   );
 }

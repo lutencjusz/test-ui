@@ -1,12 +1,12 @@
 const styles = {
   form_input: {
-    width: '50%',
-    marginLeft: '25%',
+    width: '80%',
+    marginLeft: '15%',
   },
   form_groups: {
     textAlign: 'left',
-    width: '50%',
-    marginLeft: '25%',
+    width: '80%',
+    marginLeft: '15%',
   },
   formRequired: {
     color: 'red',
@@ -14,6 +14,10 @@ const styles = {
   },
   formButton: {
     marginRight: '10px',
+  },
+  formButtonRed: {
+    marginRight: '10px',
+    'background-color': 'red',
   },
   component: {
     display: 'flex',

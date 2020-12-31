@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import initialData from './initial-data';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
@@ -203,15 +203,17 @@ export default function DnD() {
           })}
         </Container>
       </DragDropContext>
+      <br />
       {formState.state ? (
-        <FormAttributes
-          formState={formState}
-          attributes={stateEl.attributes}
-          submitAttributes={submitAttributes}
-        />
-      ) : (
-        ''
-      )}
+        <Fragment>
+          <FormAttributes
+            formState={formState}
+            attributes={stateEl.attributes}
+            submitAttributes={submitAttributes}
+          />
+          <br />
+        </Fragment>
+      ) : null}
     </div>
   );
 }
