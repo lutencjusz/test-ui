@@ -50,10 +50,10 @@ export default function FormAttributes(props) {
   return (
     <BorderWrapper
       borderColour="#007bffa8"
-      borderWidth="5px"
-      borderRadius="15px"
+      borderWidth="2px"
+      borderRadius="7px"
       borderType="solid"
-      innerPadding="10px"
+      innerPadding="30px"
       rightPosition={0.1}
       rightOffset="22px"
       rightGap="4px"
