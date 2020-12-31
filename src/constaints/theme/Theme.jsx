@@ -8,6 +8,13 @@ const styles = {
     width: '50%',
     marginLeft: '25%',
   },
+  formRequired: {
+    color: 'red',
+    marginRight: '10px',
+  },
+  formButton: {
+    marginRight: '10px',
+  },
   component: {
     display: 'flex',
     'justify-content': 'space-around',

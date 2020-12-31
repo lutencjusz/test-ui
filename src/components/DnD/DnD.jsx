@@ -19,8 +19,24 @@ export default function DnD() {
   const [formState, setFormState] = useState({ state: false, taskId: null });
 
   const submitAttributes = (taskId, data) => {
-    console.log({ data });
     setFormState({ state: false, taskId: null });
+    const newTask = {
+      ...stateEl.tasks[taskId],
+      isAttributesEnteredIn: true,
+    };
+    console.log({ newTask });
+    const newState = {
+      ...stateEl,
+      attributes: {
+        ...stateEl.attributes,
+        [taskId]: data,
+      },
+      tasks: {
+        ...stateEl.tasks,
+        [taskId]: newTask,
+      },
+    };
+    setStateEl(newState);
     toaster.success('Atrybuty uzupełnione', {
       description: `${{ data }}`,
       duration: 3,
@@ -29,9 +45,6 @@ export default function DnD() {
   };
 
   const setCategory = (setCategoryElements, taskId, columnId) => {
-    console.log(
-      `Uruchomiony setCategory ${setCategoryElements} ${taskId} ${columnId}`
-    );
     if (setCategoryElements === undefined) {
       if (columnId.includes('column-3')) {
         setFormState({
@@ -169,6 +182,8 @@ export default function DnD() {
   return (
     <div className="frame">
       <h1>Drag and Drop</h1>
+      <br />
+      <p>apka pokazująca możliwości react-beautiful-dnd oraz useForm</p>
       <DragDropContext onDragEnd={onDragEnd} onBeforeCapture={onBeforeCapture}>
         <Container>
           {stateEl.columnOrder.map((columnId) => {

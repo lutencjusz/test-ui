@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import Task from './Task.jsx';
 import { Droppable } from 'react-beautiful-dnd';
@@ -30,12 +30,23 @@ const ButtonStyle = styled.div`
 `;
 
 export default class Column extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { statusButtonSendDisabled: true };
+  }
+
   sendFinal(message) {
+    console.log(this.state.statusButtonSendDisabled);
     toaster.success('Wysłano konfigurację...', {
       description: message,
       duration: 3,
       id: 'forbidden-action',
     });
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    if (!prevState.statusButtonSendDisabled)
+      this.setState({ statusButtonSendDisabled: true });
   }
 
   render() {
@@ -62,19 +73,25 @@ export default class Column extends React.Component {
                     task.category.includes(this.props.categoryFilter)
                 )
                 .map((task, index) => (
-                  <Task
-                    key={task.id}
-                    task={task}
-                    index={index}
-                    columnId={this.props.column.id}
-                    setCategory={this.props.setCategory}
-                    setCategoryElements={task.setCategoryElements}
-                    availableDelete={
-                      this.props.column.id.includes('column-3') ? true : false
-                    }
-                    deleteTask={this.props.deleteTask}
-                    submitAttributes={this.props.submitAttributes}
-                  />
+                  <Fragment key={task.id}>
+                    {this.props.column.id.includes('column-3') &&
+                    this.state.statusButtonSendDisabled &&
+                    task.isAttributesEnteredIn
+                      ? this.setState({ statusButtonSendDisabled: false })
+                      : null}
+                    <Task
+                      task={task}
+                      index={index}
+                      columnId={this.props.column.id}
+                      setCategory={this.props.setCategory}
+                      setCategoryElements={task.setCategoryElements}
+                      availableDelete={
+                        this.props.column.id.includes('column-3') ? true : false
+                      }
+                      deleteTask={this.props.deleteTask}
+                      submitAttributes={this.props.submitAttributes}
+                    />
+                  </Fragment>
                 ))}
               {provided.placeholder}
             </TaskList>
@@ -82,7 +99,11 @@ export default class Column extends React.Component {
         </Droppable>
         {this.props.column.id === 'column-3' ? (
           <ButtonStyle>
-            <Button block onClick={() => this.sendFinal(this.props.message)}>
+            <Button
+              block
+              disabled={this.state.statusButtonSendDisabled}
+              onClick={() => this.sendFinal(this.props.message)}
+            >
               Wyślij
             </Button>
           </ButtonStyle>

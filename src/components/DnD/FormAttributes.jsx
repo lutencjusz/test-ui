@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import { useForm } from 'react-hook-form';
 import { styles } from '../../constaints';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStarOfLife } from '@fortawesome/free-solid-svg-icons';
 import Is from 'is_js';
 
 export default function FormAttributes(props) {
@@ -11,7 +13,7 @@ export default function FormAttributes(props) {
   attr[taskId].map((at) => initialArray.push([at.name, at.value]));
   const defaultValues = Object.fromEntries(initialArray);
 
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, formState } = useForm({
     defaultValues,
   });
   const [control, setControl] = useState({});
@@ -65,7 +67,18 @@ export default function FormAttributes(props) {
               style={styles.form_groups}
             >
               <div className="col-md-10 mb-2">
-                <label htmlFor={task.name}>{task.name}</label>
+                <label htmlFor={task.name}>
+                  {task.required ? (
+                    <FontAwesomeIcon
+                      icon={faStarOfLife}
+                      size="xs"
+                      style={styles.formRequired}
+                    />
+                  ) : (
+                    ''
+                  )}
+                  {task.name}
+                </label>
                 <input
                   id={task.name}
                   name={task.name}
@@ -75,10 +88,10 @@ export default function FormAttributes(props) {
                     _checkSetField(`${task.name}`, 'is-invalid', '')
                   }
                   ref={register({
-                    required: 'Wymagane',
+                    required: true,
                     validate: (a) => Is.number(parseInt(a)),
                   })}
-                  //required
+                  required
                 />
                 <div className="invalid-feedback">Niewłaściwy format pola</div>
               </div>
@@ -86,8 +99,20 @@ export default function FormAttributes(props) {
           );
         })}
         <br />
-        <button type="submit" className="btn btn-primary mb-4">
-          Zatwierdź
+        <button
+          type="submit"
+          disabled={!formState.isDirty}
+          className="btn btn-primary mb-4"
+          style={styles.formButton}
+        >
+          Wyślij
+        </button>
+        <button
+          type="reset"
+          className="btn btn-danger mb-4"
+          style={styles.formButton}
+        >
+          Usuń
         </button>
       </form>
     </Fragment>

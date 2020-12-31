@@ -84,8 +84,22 @@ const initialData = {
       },
       { name: 'price', value: 2, type: 'number' },
     ],
-    'task-2': ['quantity', 'price'],
-    'task-3': ['quantity', 'price'],
+    'task-2': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
+    'task-3': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
     'task-4': [
       {
         name: 'ilość',
@@ -95,21 +109,70 @@ const initialData = {
       },
       { name: 'price', value: '2', type: 'number' },
     ],
-    'task-5': ['quantity', 'price'],
-    'task-6': ['quantity', 'price'],
+    'task-5': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
+    'task-6': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
     'task-7': [
       {
         name: 'quantity',
         type: 'number',
         required: true,
       },
-      { name: 'price', value: '2', type: 'number' },
+      { name: 'price', type: 'number', required: true },
     ],
-    'task-8': ['quantity', 'price'],
-    'task-9': ['quantity', 'price'],
-    'task-10': ['quantity', 'price'],
-    'task-11': ['quantity', 'price'],
-    'task-12': ['quantity', 'price'],
+    'task-8': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
+    'task-9': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
+    'task-10': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
+    'task-11': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
+    'task-12': [
+      {
+        name: 'quantity',
+        value: 3,
+        type: 'number',
+      },
+      { name: 'price', value: 2, type: 'number' },
+    ],
   },
 };
 

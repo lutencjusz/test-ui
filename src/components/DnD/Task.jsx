@@ -11,7 +11,15 @@ const Container = styled.div`
   margin-bottom: 8px;
   transition: background-color 0.2s ease;
   background-color: ${(props) =>
-    props.isDragDisabled ? 'white' : props.isDragging ? 'lightgreen' : 'white'};
+    props.isDragDisabled
+      ? 'white'
+      : props.isDragging
+      ? 'lightgreen'
+      : props.isAttributesEnteredIn &&
+        (props.columnId.includes('column-3') ||
+          props.columnId.includes('column-2'))
+      ? 'lightblue'
+      : 'white'};
   border: 1px solid
     ${(props) => (props.isDragDisabled ? 'cadetblue' : 'lightgrey')};
   display: flex;
@@ -47,6 +55,8 @@ export default class Task extends React.Component {
             innerRef={provided.innerRef}
             isDragging={snapshot.isDragging}
             isDragDisabled={isDragDisabled}
+            isAttributesEnteredIn={this.props.task.isAttributesEnteredIn}
+            columnId={this.props.columnId}
             onClick={() =>
               this.props.setCategory(
                 this.props.task.setCategoryElements,

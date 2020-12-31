@@ -17,6 +17,12 @@ export default function StyledContentLoader() {
     <div className="frame">
       <h1>styled-content-loader</h1>
       <br />
+      <p>
+        dodatkowo react-border-wrapper oraz dla porównania
+        tiny-skeleton-loader-react <br /> ikonka przez
+        @fortawesome/react-fontawesome oraz @fortawesome/free-solid-svg-icons
+      </p>
+      <br />
       <div style={styles.component}>
         <div style={styles.componentItem}>
           <BorderWrapper
