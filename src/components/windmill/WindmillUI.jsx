@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import {
-  WindmillContext,
   Button,
   Label,
   Select,
@@ -10,13 +9,10 @@ import {
   CardBody,
   Dropdown,
   DropdownItem,
-  Avatar,
-  HeartIcon,
 } from '@windmill/react-ui';
 import 'tailwindcss/tailwind.css';
 
 export default function WindmillUI() {
-  const { mode, toggleMode } = useContext(WindmillContext);
   const [isOpen, setIsOpen] = useState(false);
   function toggleDropdown() {
     setIsOpen(!isOpen);
@@ -73,41 +69,7 @@ export default function WindmillUI() {
           </p>
         </CardBody>
       </Card>
-      <Card className="max-w-md">
-        <CardBody>
-          <div className="flex">
-            <Avatar size="large" src="./logo192.png" alt="Judith" />
-            <div className="ml-2">
-              <p className="font-semibold dark:text-gray-300">Judith Ipsum</p>
-              <p className="text-xs text-gray-500">@judithipsum</p>
-            </div>
-          </div>
-          <p className="my-2 dark:text-gray-300">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, cum
-            commodi a omnis numquam quod? Totam exercitationem quos hic ipsam at
-            qui cum numquam, sed amet ratione! Ratione, nihil dolorum.
-          </p>
-          <div className="flex items-end justify-between">
-            <div>
-              <Badge type="neutral">#tailwindcss</Badge>
-              <Badge type="neutral" className="ml-2">
-                #react
-              </Badge>
-            </div>
-            <div>
-              <Button
-                size="small"
-                icon={HeartIcon}
-                layout="link"
-                aria-label="Like"
-              />
-              <Button size="small" className="ml-2">
-                Read more
-              </Button>
-            </div>
-          </div>
-        </CardBody>
-      </Card>
+
       <div className="relative">
         <Button
           onClick={toggleDropdown}
@@ -126,8 +88,6 @@ export default function WindmillUI() {
           </DropdownItem>
         </Dropdown>
       </div>
-      <Button onClick={toggleMode}>Toggle theme</Button>
-      <p>Current theme is: {mode}</p>
     </div>
   );
 }
