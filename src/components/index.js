@@ -13,4 +13,5 @@ export { default as Recharts } from './recharts';
 export { default as StyledContentLoader } from './styledContentLoader';
 export { default as ReactNil } from './reactNil';
 export { default as Windmill } from './windmill';
+export { default as BaseUI } from './baseUI';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';

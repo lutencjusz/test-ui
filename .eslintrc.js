@@ -17,7 +17,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'import', 'prettier'],
+  plugins: ['react', 'import', 'prettier', 'baseui'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 0,
@@ -31,5 +31,8 @@ module.exports = {
         trailingComma: 'es5',
       },
     ],
+    'baseui/deprecated-theme-api': 'warn',
+    'baseui/deprecated-component-api': 'warn',
+    'baseui/no-deep-imports': 'warn',
   },
 };
