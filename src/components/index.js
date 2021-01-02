@@ -14,4 +14,5 @@ export { default as StyledContentLoader } from './styledContentLoader';
 export { default as ReactNil } from './reactNil';
 export { default as Windmill } from './windmill';
 export { default as BaseUI } from './baseUI';
+export { default as PreciseUI } from './preciseUI';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';

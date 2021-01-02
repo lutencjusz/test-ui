@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { SuspenseErrorBoundary } from './components';
+import { PreciseUI, SuspenseErrorBoundary } from './components';
 //import { SignInButton } from './components';
 //import { VipBadge } from './components';
 //import { PrimeButton } from './components';
@@ -83,6 +83,7 @@ function App() {
           <ReactNil />
           <Windmill />
           <BaseUI />
+          <PreciseUI />
         </SuspenseErrorBoundary>
       </div>
     </div>
