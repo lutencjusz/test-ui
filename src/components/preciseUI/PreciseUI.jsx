@@ -9,13 +9,6 @@ const Container = styledComponent.div`
   width: 80vw;
 `;
 
-const StyledButton = styledComponent.button`
-    background-color: #cc1400;
-    &:hover{
-        background-color: red;
-    }
-`;
-
 export default function PreciseUI() {
   return (
     <div className="frame">
@@ -55,9 +48,7 @@ export default function PreciseUI() {
           <br />
           <div>
             <Button type="submit">Zapisz</Button>
-            <StyledButton>
-              <Button type="reset">Usuń</Button>
-            </StyledButton>
+            <Button type="reset">Usuń</Button>
           </div>
         </Container>
       </Form>

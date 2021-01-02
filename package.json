@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@adobe/react-spectrum": "^3.7.0",
     "@atlaskit/banner": "^11.0.0",
     "@atlaskit/button": "^14.0.0",
     "@atlaskit/modal-dialog": "^11.0.1",

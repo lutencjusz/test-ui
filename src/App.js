@@ -44,6 +44,7 @@ const GetData = React.lazy(() => import('./hooks/useFetch'));
 const DemoCookie = React.lazy(() => import('./hooks/useCookie'));
 const DemoLatest = React.lazy(() => import('./hooks/useLatest'));
 const DemoUseCss = React.lazy(() => import('./hooks/useCss'));
+const Spectrum = React.lazy(() => import('./components/spectrum'));
 const StyledContentLoader = React.lazy(() =>
   import('./components/styledContentLoader')
 );
@@ -84,6 +85,7 @@ function App() {
           <Windmill />
           <BaseUI />
           <PreciseUI />
+          <Spectrum />
         </SuspenseErrorBoundary>
       </div>
     </div>
