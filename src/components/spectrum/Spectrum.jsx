@@ -21,7 +21,21 @@ export default function Spectrum() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  let isValid = React.useMemo(() => Is.email(email), [email]);
+  const [check, setCheck] = useState(false);
+  const [selected, setSelected] = useState('dogs');
+
+  let isValidEmail = React.useMemo(() => Is.email(email), [email]);
+  let isValidFirstName = React.useMemo(() => !Is.empty(firstName), [firstName]);
+  let isValidCheck = React.useMemo(() => check, [check]);
+
+  const reset = () => {
+    setFirstName(undefined);
+    setLastName(undefined);
+    setEmail(undefined);
+    setCheck(false);
+    setSelected('dogs');
+  };
+
   return (
     <div className="frame" style={{ position: 'relative' }}>
       <I18nProvider locale="fr-FR">
@@ -41,7 +55,9 @@ export default function Spectrum() {
             labelPosition="top"
             onSubmit={(event) => {
               event.preventDefault();
-              alert(`Wartości: ${firstName} ${lastName} ${email}`);
+              alert(
+                `Wartości: ${firstName}, ${lastName}, ${email}, ${selected}, regulamin: ${check}`
+              );
             }}
           >
             <Provider>
@@ -59,26 +75,41 @@ export default function Spectrum() {
                 value={lastName}
                 onChange={setLastName}
                 isRequired={false}
+                marginTop={20}
               />
               <TextField
                 label="Email"
                 placeholder="Podaj swój email"
                 value={email}
                 onChange={setEmail}
-                validationState={isValid ? 'valid' : 'invalid'}
+                validationState={isValidEmail ? 'valid' : 'invalid'}
                 inputMode="email"
+                marginTop={20}
               />
-              <RadioGroup label="Ulubione zwierzę">
+              <RadioGroup
+                label="Ulubione zwierzę"
+                defaultValue="dogs"
+                value={selected}
+                onChange={setSelected}
+              >
                 <Radio value="dogs">Pies</Radio>
                 <Radio value="cats">Kot</Radio>
                 <Radio value="hip">Hipopotam</Radio>
               </RadioGroup>
-              <Checkbox>Zapoznałem się z regulaminem.</Checkbox>
+              <Checkbox isSelected={check} onChange={setCheck}>
+                Zapoznałem się z regulaminem.
+              </Checkbox>
               <ButtonGroup>
-                <Button variant="primary" type="submit">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  isDisabled={
+                    !isValidEmail || !isValidFirstName || !isValidCheck
+                  }
+                >
                   Zatwierdź
                 </Button>
-                <Button variant="secondary" type="reset">
+                <Button variant="negative" type="reset" onPress={() => reset()}>
                   Usuń
                 </Button>
               </ButtonGroup>
