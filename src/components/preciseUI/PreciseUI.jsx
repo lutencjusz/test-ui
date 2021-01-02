@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Form, TextField, PasswordField } from 'precise-ui';
 import Is from 'is_js';
-import styledComponent from 'styled-components';
+import styled from 'styled-components';
 
-const Container = styledComponent.div`
+const Container = styled.div`
   text-align: left;
   margin-left: 5vw;
   width: 80vw;

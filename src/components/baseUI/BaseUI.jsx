@@ -23,7 +23,6 @@ import { Block } from 'baseui/block';
 const engine = new Styletron();
 
 const Centered = styled.div`
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -77,7 +76,7 @@ export default function BaseUI() {
   };
 
   return (
-    <div className="frame">
+    <div className="frame" style={{ position: 'relative' }}>
       <h1>BaseUI</h1>
       <br />
       <h4>dodatkowo baseui-final-form</h4>
@@ -155,6 +154,7 @@ export default function BaseUI() {
                 initialValues={{ citi: 'warszawa', phoneNumber: '48' }}
                 render={({ handleSubmit, pristine, invalid }) => (
                   <form onSubmit={handleSubmit}>
+                    <br />
                     <Field
                       name="name"
                       label="Imię"
