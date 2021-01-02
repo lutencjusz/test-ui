@@ -76,9 +76,8 @@ const PassMaster = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="needs-validation"
         noValidate
-        style={styles.lightStyle}
       >
-        <div className="form-row" style={styles.form_grups}>
+        <div className="form-row" style={styles.form_groups}>
           <div className="col-md-5 mb-3">
             <label htmlFor="name">Nazwa:</label>
             <input
@@ -107,7 +106,7 @@ const PassMaster = () => {
             </div>
           </div>
         </div>
-        <div className="form-row" style={styles.form_grups}>
+        <div className="form-row" style={styles.form_groups}>
           <div className="col-md-6 mb-3">
             <label htmlFor="email">Email:</label>
             <input

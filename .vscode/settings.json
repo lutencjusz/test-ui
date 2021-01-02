@@ -18,11 +18,13 @@
   "primereact",
   "rsuite",
   "semibold",
+  "strenght",
   "styletron",
   "tailwindcss",
   "todos",
   "wyslij",
-  "xmlhttp"
+  "xmlhttp",
+  "zxcvbn"
 ],
 "editor.fontFamily": "JetBrains Mono, 'Courier New', monospace",
 "editor.fontSize": 13,

@@ -6,7 +6,7 @@ const styles = {
   form_groups: {
     textAlign: 'left',
     width: '80%',
-    marginLeft: '15%',
+    marginLeft: '10%',
   },
   formRequired: {
     color: 'red',
