@@ -10,9 +10,9 @@ const Container = styledComponent.div`
 `;
 
 const StyledButton = styledComponent.button`
-    background-color: red;
+    background-color: #cc1400;
     &:hover{
-        background-color: red4;
+        background-color: red;
     }
 `;
 
