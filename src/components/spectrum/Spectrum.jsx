@@ -38,12 +38,14 @@ export default function Spectrum() {
               value={firstName}
               onChange={setFirstName}
             />
+            <br />
             <TextField
               label="Nazwisko"
               placeholder="Podaj swoje Nazwisko"
               value={lastName}
               onChange={setLastName}
             />
+            <br />
             <TextField
               label="Email"
               placeholder="Podaj swój email"
@@ -52,6 +54,7 @@ export default function Spectrum() {
               validationState={isValid ? 'valid' : 'invalid'}
               inputMode="email"
             />
+            <br />
             <RadioGroup label="Ulubione zwierzę">
               <Radio value="dogs">Pies</Radio>
               <Radio value="cats">Kot</Radio>
