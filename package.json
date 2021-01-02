@@ -70,6 +70,7 @@
     ]
   },
   "devDependencies": {
+    "@umijs/plugin-antd": "^0.9.1",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-baseui": "^9.106.3",

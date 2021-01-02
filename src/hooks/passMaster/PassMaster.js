@@ -76,6 +76,7 @@ const PassMaster = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="needs-validation"
         noValidate
+        style={styles.lightStyle}
       >
         <div className="form-row" style={styles.form_grups}>
           <div className="col-md-5 mb-3">

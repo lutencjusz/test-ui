@@ -10,6 +10,12 @@ import {
   Button,
   ButtonGroup,
   TextField,
+  Dialog,
+  Heading,
+  Divider,
+  Content,
+  Text,
+  DialogTrigger,
 } from '@adobe/react-spectrum';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStarOfLife, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -55,9 +61,9 @@ export default function Spectrum() {
             labelPosition="top"
             onSubmit={(event) => {
               event.preventDefault();
-              alert(
-                `Wartości: ${firstName}, ${lastName}, ${email}, ${selected}, regulamin: ${check}`
-              );
+              // alert(
+              //   `Wartości: ${firstName}, ${lastName}, ${email}, ${selected}, regulamin: ${check}`
+              // );
             }}
           >
             <Provider>
@@ -100,15 +106,34 @@ export default function Spectrum() {
                 Zapoznałem się z regulaminem.
               </Checkbox>
               <ButtonGroup>
-                <Button
-                  variant="primary"
-                  type="submit"
-                  isDisabled={
-                    !isValidEmail || !isValidFirstName || !isValidCheck
-                  }
-                >
-                  Zatwierdź
-                </Button>
+                <DialogTrigger>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    isDisabled={
+                      !isValidEmail || !isValidFirstName || !isValidCheck
+                    }
+                  >
+                    Zatwierdź
+                  </Button>
+                  {(close) => (
+                    <Dialog>
+                      <Heading>Zatwierdzenie formularza</Heading>
+                      <Divider />
+                      <Content>
+                        <Text>
+                          Imię: {firstName}, Nazwisko: {lastName}, email:{' '}
+                          {email}, <br /> ulubione zwierze: {selected}
+                        </Text>
+                      </Content>
+                      <ButtonGroup>
+                        <Button variant="cta" onPress={close}>
+                          OK
+                        </Button>
+                      </ButtonGroup>
+                    </Dialog>
+                  )}
+                </DialogTrigger>
                 <Button variant="negative" type="reset" onPress={() => reset()}>
                   Usuń
                 </Button>

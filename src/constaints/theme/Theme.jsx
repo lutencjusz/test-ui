@@ -32,6 +32,16 @@ const styles = {
     marginTop: '0px',
     fontSize: '4em',
   },
+  darkStyle: {
+    backgroundColor: 'black',
+    width: '80%',
+    marginLeft: '10%',
+  },
+  lightStyle: {
+    backgroundColor: 'white',
+    width: '80%',
+    marginLeft: '10%',
+  },
 };
 
 export default styles;

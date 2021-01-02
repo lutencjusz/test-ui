@@ -14,6 +14,7 @@ import {
   Col,
 } from 'antd';
 import { toaster } from 'evergreen-ui';
+import { styles } from '../../constaints';
 
 export default function AntD() {
   const [show, setShow] = useState(false);
@@ -43,7 +44,7 @@ export default function AntD() {
   };
 
   const onFinish = (values) => {
-    console.log({ values });
+    //console.log({ values });
     toaster.success('Formularz wysłany...', {
       description: `z danymi: informacja "${values.note}"${
         values.customizeGender
@@ -80,103 +81,111 @@ export default function AntD() {
   return (
     <div className="frame">
       <h1>Ant Design</h1>
-      <div>
-        <Row justify="left">
-          <Col
-            span={11}
-            style={{ textAlign: 'right', lineHeight: '2', color: 'black' }}
-          >
-            Wprowadź swoją datę:
-          </Col>
-          <Col span={1}></Col>
-          <Col span={12} style={{ textAlign: 'left' }}>
-            <DatePicker />
-          </Col>
-        </Row>
-      </div>
       <br />
-      <Space>
-        <Button type="dashed">Przycisk</Button>
-        <Button type="danger">Uwaga!</Button>
-      </Space>
-      <div>
+      <div style={styles.darkStyle}>
+        <div>
+          <br />
+          <Row justify="left">
+            <Col
+              span={11}
+              style={{ textAlign: 'right', lineHeight: '2', color: 'white' }}
+            >
+              Wprowadź swoją datę:
+            </Col>
+            <Col span={1}></Col>
+            <Col span={12} style={{ textAlign: 'left' }}>
+              <DatePicker />
+            </Col>
+          </Row>
+        </div>
         <br />
         <Space>
-          <Switch
-            checked={show}
-            onChange={() => {
-              setShow(!show);
-            }}
-          />
-          <Badge count={show ? 25 : 0} />
-          <Badge count={show ? 4 : 0} className="site-badge-count-4" />
-          <Badge
-            className="site-badge-count-109"
-            count={show ? 109 : 0}
-            style={{ backgroundColor: 'magenta' }}
-          />
+          <Button type="dashed">Przycisk</Button>
+          <Button type="danger">Uwaga!</Button>
         </Space>
-      </div>
-      <br />
-      <Form
-        {...layout}
-        form={form}
-        name="control-hooks"
-        onFinish={onFinish}
-        validateMessages={validateMessages}
-      >
-        <Form.Item name="note" label="Informacja" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="gender"
-          label="Płeć"
-          tooltip="Wybierz swoją płeć"
-          rules={[{ required: true }]}
-        >
-          <Select
-            placeholder="Wybierz płeć, a zostanie wpisany tekst powyżej!"
-            onChange={onGenderChange}
-            allowClear
-          >
-            <Option value="mężczyzna">mężczyzna</Option>
-            <Option value="kobieta">kobieta</Option>
-            <Option value="inna płeć">inna płeć</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
-          noStyle
-          shouldUpdate={(prevValues, currentValues) =>
-            prevValues.gender !== currentValues.gender
-          }
-        >
-          {({ getFieldValue }) => {
-            return getFieldValue('gender') === 'inna płeć' ? (
-              <Form.Item
-                name="customizeGender"
-                label="Inna płeć"
-                rules={[{ required: true }]}
-              >
-                <Input />
-              </Form.Item>
-            ) : null;
-          }}
-        </Form.Item>
-        <Button.Group {...tailLayout}>
+        <div>
+          <br />
           <Space>
-            <Button type="primary" htmlType="submit">
-              Zatwierdź
-            </Button>
-            <Button danger htmlType="button" onClick={onReset}>
-              Usuń
-            </Button>
-            <Button type="dashed" htmlType="button" onClick={onFill}>
-              Wypełnij domyślnie
-            </Button>
+            <Switch
+              checked={show}
+              onChange={() => {
+                setShow(!show);
+              }}
+            />
+            <Badge count={show ? 25 : 0} />
+            <Badge count={show ? 4 : 0} className="site-badge-count-4" />
+            <Badge
+              className="site-badge-count-109"
+              count={show ? 109 : 0}
+              style={{ backgroundColor: 'magenta' }}
+            />
           </Space>
-        </Button.Group>
-      </Form>
-      <br />
+        </div>
+        <br />
+        <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          validateMessages={validateMessages}
+        >
+          <Form.Item
+            name="note"
+            label="Informacja"
+            rules={[{ required: true }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="gender"
+            label="Płeć"
+            tooltip="Wybierz swoją płeć"
+            rules={[{ required: true }]}
+          >
+            <Select
+              placeholder="Wybierz płeć, a zostanie wpisany tekst powyżej!"
+              onChange={onGenderChange}
+              allowClear
+            >
+              <Option value="mężczyzna">mężczyzna</Option>
+              <Option value="kobieta">kobieta</Option>
+              <Option value="inna płeć">inna płeć</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) =>
+              prevValues.gender !== currentValues.gender
+            }
+          >
+            {({ getFieldValue }) => {
+              return getFieldValue('gender') === 'inna płeć' ? (
+                <Form.Item
+                  name="customizeGender"
+                  label="Inna płeć"
+                  rules={[{ required: true }]}
+                >
+                  <Input />
+                </Form.Item>
+              ) : null;
+            }}
+          </Form.Item>
+          <Button.Group {...tailLayout}>
+            <Space>
+              <Button type="primary" htmlType="submit">
+                Zatwierdź
+              </Button>
+              <Button danger htmlType="button" onClick={onReset}>
+                Usuń
+              </Button>
+              <Button type="dashed" htmlType="button" onClick={onFill}>
+                Wypełnij domyślnie
+              </Button>
+            </Space>
+          </Button.Group>
+        </Form>
+        <br />
+      </div>
     </div>
   );
 }
