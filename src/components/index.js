@@ -16,4 +16,5 @@ export { default as Windmill } from './windmill';
 export { default as BaseUI } from './baseUI';
 export { default as PreciseUI } from './preciseUI';
 export { default as Spectrum } from './spectrum';
+export { default as AwesomeButtonDemo } from './awesomeButtonDemo';
 export { SuspenseErrorBoundary } from './suspenseErrorBoundary';

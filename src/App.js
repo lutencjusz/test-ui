@@ -2,27 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { PreciseUI, SuspenseErrorBoundary } from './components';
-//import { SignInButton } from './components';
-//import { VipBadge } from './components';
-//import { PrimeButton } from './components';
-//import { GestAltTest } from './components';
-//import { UsersList } from './components';
-//import { CancelButton } from './components';
-//import { ConfirmButton } from './components';
-//import { AntD } from './components';
-//import { DnD } from './components';
-//import { Victory } from './components';
-//import { Recharts } from './components';
-//import { StyledContentLoader } from './components';
-//import { ReactNil } from './components';
-//import { Windmill } from './components';
-//import { IsTest } from './hooks';
-//import { PassMaster } from './hooks';
-//import { Resolver } from './hooks';
-//import { GetData } from './hooks';
-//import { DemoCookie } from './hooks';
-//import { DemoLatest } from './hooks';
-//import { DemoUseCss } from './hooks';
 
 const SignInButton = React.lazy(() => import('./components/rsuite'));
 const VipBadge = React.lazy(() => import('./components/shards-react'));
@@ -45,6 +24,9 @@ const DemoCookie = React.lazy(() => import('./hooks/useCookie'));
 const DemoLatest = React.lazy(() => import('./hooks/useLatest'));
 const DemoUseCss = React.lazy(() => import('./hooks/useCss'));
 const Spectrum = React.lazy(() => import('./components/spectrum'));
+const AwesomeButtonDemo = React.lazy(() =>
+  import('./components/awesomeButtonDemo')
+);
 const StyledContentLoader = React.lazy(() =>
   import('./components/styledContentLoader')
 );
@@ -86,6 +68,7 @@ function App() {
           <BaseUI />
           <PreciseUI />
           <Spectrum />
+          <AwesomeButtonDemo />
         </SuspenseErrorBoundary>
       </div>
     </div>

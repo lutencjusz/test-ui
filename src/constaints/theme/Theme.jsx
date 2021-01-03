@@ -42,6 +42,25 @@ const styles = {
     width: '80%',
     marginLeft: '10%',
   },
+  DraggableFrame: {
+    position: 'relative',
+    display: 'flex',
+    'justify-content': 'space-around',
+    'flex-wrap': 'wrap',
+    height: '50vh',
+    backgroundColor: 'cadetblue',
+  },
+  DraggableItem: {
+    position: 'absolute',
+    margin: '10px',
+    height: '10vh',
+    color: 'white',
+    padding: '10px',
+    borderColor: 'white',
+    borderRadius: '2px',
+    borderWidth: '2px',
+    cursor: 'grab',
+  },
 };
 
 export default styles;
