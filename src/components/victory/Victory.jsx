@@ -7,6 +7,7 @@ import {
   VictoryArea,
   VictoryLegend,
 } from 'victory';
+import { styles } from '../../constaints';
 
 export default function Victory() {
   const data2011 = [
@@ -45,119 +46,121 @@ export default function Victory() {
 
   return (
     <div className="frame">
-      <h1>Victory</h1>
-      <VictoryChart
-        //horizontal
-        theme={VictoryTheme.material}
-        domainPadding={40}
-        animate={{ duration: 1000 }}
-        height={300}
-        width={400}
-      >
-        <VictoryLegend
-          x={60}
-          y={10}
-          title="Legend"
-          centerTitle
-          orientation="horizontal"
-          gutter={10}
-          style={{ border: { stroke: 'black' }, title: { fontSize: 10 } }}
-          data={[
-            { name: '2011', symbol: { fill: '#ffaf55' } },
-            { name: '2012', symbol: { fill: '#ff821d' } },
-            { name: '2013', symbol: { fill: '#dc5429' } },
-            { name: '2014', symbol: { fill: '#c43343' } },
-            { name: '2015', symbol: { fill: '#940031' } },
-          ]}
-        />
-        <VictoryAxis
-          tickValues={[1, 2, 3, 4]}
-          tickFormat={['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']}
-        />
-        <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
-        <VictoryStack colorScale={'warm'}>
-          <VictoryArea
-            data={data2011}
-            x="quarter"
-            y="earnings"
-            style={{
-              data: {
-                stroke: '#333333',
-                strokeWidth: 5,
-                strokeLinecap: 'round',
-              },
-            }}
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 1000 },
-            }}
+      <div style={styles.lightStyle}>
+        <h1>Victory</h1>
+        <VictoryChart
+          //horizontal
+          theme={VictoryTheme.material}
+          domainPadding={40}
+          animate={{ duration: 1000 }}
+          height={300}
+          width={400}
+        >
+          <VictoryLegend
+            x={60}
+            y={10}
+            title="Legend"
+            centerTitle
+            orientation="horizontal"
+            gutter={10}
+            style={{ border: { stroke: 'black' }, title: { fontSize: 10 } }}
+            data={[
+              { name: '2011', symbol: { fill: '#ffaf55' } },
+              { name: '2012', symbol: { fill: '#ff821d' } },
+              { name: '2013', symbol: { fill: '#dc5429' } },
+              { name: '2014', symbol: { fill: '#c43343' } },
+              { name: '2015', symbol: { fill: '#940031' } },
+            ]}
           />
-          <VictoryArea
-            data={data2012}
-            x="quarter"
-            y="earnings"
-            style={{
-              data: {
-                stroke: '#333333',
-                strokeWidth: 5,
-                strokeLinecap: 'round',
-              },
-            }}
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 1000 },
-            }}
+          <VictoryAxis
+            tickValues={[1, 2, 3, 4]}
+            tickFormat={['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4']}
           />
-          <VictoryArea
-            data={data2013}
-            x="quarter"
-            y="earnings"
-            style={{
-              data: {
-                stroke: '#333333',
-                strokeWidth: 5,
-                strokeLinecap: 'round',
-              },
-            }}
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 1000 },
-            }}
-          />
-          <VictoryArea
-            data={data2014}
-            x="quarter"
-            y="earnings"
-            style={{
-              data: {
-                stroke: '#333333',
-                strokeWidth: 5,
-                strokeLinecap: 'round',
-              },
-            }}
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 1000 },
-            }}
-          />
-          <VictoryArea
-            data={data2015}
-            x="quarter"
-            y="earnings"
-            style={{
-              data: {
-                stroke: '#333333',
-                strokeWidth: 5,
-                strokeLinecap: 'round',
-              },
-            }}
-            animate={{
-              duration: 2000,
-              onLoad: { duration: 1000 },
-            }}
-          />
-        </VictoryStack>
-      </VictoryChart>
+          <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
+          <VictoryStack colorScale={'warm'}>
+            <VictoryArea
+              data={data2011}
+              x="quarter"
+              y="earnings"
+              style={{
+                data: {
+                  stroke: '#333333',
+                  strokeWidth: 5,
+                  strokeLinecap: 'round',
+                },
+              }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
+            />
+            <VictoryArea
+              data={data2012}
+              x="quarter"
+              y="earnings"
+              style={{
+                data: {
+                  stroke: '#333333',
+                  strokeWidth: 5,
+                  strokeLinecap: 'round',
+                },
+              }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
+            />
+            <VictoryArea
+              data={data2013}
+              x="quarter"
+              y="earnings"
+              style={{
+                data: {
+                  stroke: '#333333',
+                  strokeWidth: 5,
+                  strokeLinecap: 'round',
+                },
+              }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
+            />
+            <VictoryArea
+              data={data2014}
+              x="quarter"
+              y="earnings"
+              style={{
+                data: {
+                  stroke: '#333333',
+                  strokeWidth: 5,
+                  strokeLinecap: 'round',
+                },
+              }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
+            />
+            <VictoryArea
+              data={data2015}
+              x="quarter"
+              y="earnings"
+              style={{
+                data: {
+                  stroke: '#333333',
+                  strokeWidth: 5,
+                  strokeLinecap: 'round',
+                },
+              }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
+            />
+          </VictoryStack>
+        </VictoryChart>
+      </div>
     </div>
   );
 }

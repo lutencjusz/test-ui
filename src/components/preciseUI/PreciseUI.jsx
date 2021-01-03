@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   text-align: left;
-  margin-left: 5vw;
-  width: 80vw;
+  margin-left: 10%;
+  width: 80%;
 `;
 
 export default function PreciseUI() {

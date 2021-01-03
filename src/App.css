@@ -7,6 +7,12 @@
 #components-form-demo-control-hooks .ant-btn {
   margin-right: 10vw;
 }
+  .diagram-component {
+    width: 80%;
+    margin-left: 10%;
+    height: 400px;
+    background-color: cadetblue;
+  }
 
 .App {
   text-align: center;

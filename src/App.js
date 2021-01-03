@@ -24,6 +24,7 @@ const DemoCookie = React.lazy(() => import('./hooks/useCookie'));
 const DemoLatest = React.lazy(() => import('./hooks/useLatest'));
 const DemoUseCss = React.lazy(() => import('./hooks/useCss'));
 const Spectrum = React.lazy(() => import('./components/spectrum'));
+const GoJS = React.lazy(() => import('./components/goJS'));
 const AwesomeButtonDemo = React.lazy(() =>
   import('./components/awesomeButtonDemo')
 );
@@ -69,6 +70,7 @@ function App() {
           <PreciseUI />
           <Spectrum />
           <AwesomeButtonDemo />
+          <GoJS />
         </SuspenseErrorBoundary>
       </div>
     </div>

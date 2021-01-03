@@ -48,6 +48,8 @@ const styles = {
     'justify-content': 'space-around',
     'flex-wrap': 'wrap',
     height: '50vh',
+    width: '80%',
+    marginLeft: '10%',
     backgroundColor: 'cadetblue',
   },
   DraggableItem: {

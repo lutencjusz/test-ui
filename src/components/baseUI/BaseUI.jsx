@@ -29,8 +29,8 @@ const Centered = styled.div`
   align-items: center;
   text-align: left;
   height: 100%;
-  width: 80vw;
-  margin-left: 5vw;
+  width: 80%;
+  margin-left: 10%;
   background-color: ${(props) =>
     props.theme === DarkTheme ? 'black' : 'white'};
 `;

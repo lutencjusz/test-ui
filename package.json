@@ -29,6 +29,8 @@
     "final-form": "^4.20.1",
     "final-form-arrays": "^3.0.2",
     "gestalt": "^6.2.0",
+    "gojs": "^2.1.32",
+    "gojs-react": "^1.0.10",
     "is-js": "^0.1.1",
     "npm": "^7.3.0",
     "postcss": "^8.2.2",

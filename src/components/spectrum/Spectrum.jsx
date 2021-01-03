@@ -49,8 +49,8 @@ export default function Spectrum() {
         <Provider
           theme={defaultTheme}
           colorScheme={customTheme ? 'dark' : 'light'}
-          width={'80vw'}
-          margin={'5vw'}
+          width={'80%'}
+          margin={'10%'}
         >
           <Form
             isRequired
