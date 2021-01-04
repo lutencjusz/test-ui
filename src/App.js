@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { PreciseUI, SuspenseErrorBoundary } from './components';
+import { SuspenseErrorBoundary } from './components';
 
 const SignInButton = React.lazy(() => import('./components/rsuite'));
 const VipBadge = React.lazy(() => import('./components/shards-react'));
@@ -16,6 +16,7 @@ const Victory = React.lazy(() => import('./components/victory'));
 const Recharts = React.lazy(() => import('./components/recharts'));
 const Windmill = React.lazy(() => import('./components/windmill'));
 const BaseUI = React.lazy(() => import('./components/baseUI'));
+const PreciseUI = React.lazy(() => import('./components/preciseUI'));
 const IsTest = React.lazy(() => import('./hooks/is'));
 const PassMaster = React.lazy(() => import('./hooks/passMaster'));
 const Resolver = React.lazy(() => import('./hooks/useEffect'));
@@ -41,7 +42,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h3 style={{ color: 'white' }}>To jest przykładowa aplikacja</h3>
-        <p>Pokazuje działanie React Redux</p>
+        <p>Pokazuje działanie React oraz bibliotek</p>
       </header>
       <div>
         <SuspenseErrorBoundary>

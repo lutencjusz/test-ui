@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { LoadingIndicator } from '../../components';
 import './SuspenseErrorBoundary.css';
 
-class SuspenseErrorBoundary extends React.Component {
+export default class SuspenseErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -44,5 +44,3 @@ class SuspenseErrorBoundary extends React.Component {
     );
   }
 }
-
-export default SuspenseErrorBoundary;
