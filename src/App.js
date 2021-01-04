@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import { SuspenseErrorBoundary } from './components';
@@ -25,7 +26,7 @@ const DemoCookie = React.lazy(() => import('./hooks/useCookie'));
 const DemoLatest = React.lazy(() => import('./hooks/useLatest'));
 const DemoUseCss = React.lazy(() => import('./hooks/useCss'));
 const Spectrum = React.lazy(() => import('./components/spectrum'));
-const GoJS = React.lazy(() => import('./components/goJS'));
+// const GoJS = React.lazy(() => import('./components/goJS'));
 const AwesomeButtonDemo = React.lazy(() =>
   import('./components/awesomeButtonDemo')
 );
@@ -38,43 +39,94 @@ const ReactNil = React.lazy(() => import('./components/reactNil'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h3 style={{ color: 'white' }}>To jest przykładowa aplikacja</h3>
-        <p>Pokazuje działanie React oraz bibliotek</p>
-      </header>
-      <div>
-        <SuspenseErrorBoundary>
-          <SignInButton />
-          <VipBadge />
-          <PrimeButton />
-          <GestAltTest />
-          <UsersList />
-          <CancelButton />
-          <ConfirmButton />
-          <IsTest />
-          <PassMaster />
-          <Resolver />
-          <GetData />
-          <DemoCookie />
-          <DemoLatest />
-          <DemoUseCss />
-          <DnD />
-          <AntD />
-          <Victory />
-          <Recharts />
-          <StyledContentLoader />
-          <ReactNil />
-          <Windmill />
-          <BaseUI />
-          <PreciseUI />
-          <Spectrum />
-          <AwesomeButtonDemo />
-          <GoJS />
-        </SuspenseErrorBoundary>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h3 style={{ color: 'white' }}>To jest przykładowa aplikacja</h3>
+          <p>Pokazuje działanie React oraz bibliotek</p>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/#/" className="a">
+                  Formularze
+                </Link>
+              </li>
+              <li>
+                <Link to="/aplikacje" className="a">
+                  Aplikacje
+                </Link>
+              </li>
+              <li>
+                <Link to="/hooks" className="a">
+                  Hooks
+                </Link>
+              </li>
+              <li>
+                <Link to="/wykresy" className="a">
+                  Wykresy
+                </Link>
+              </li>
+              <li>
+                <Link to="/grafy" className="a">
+                  Grafy
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <SuspenseErrorBoundary>
+                <StyledContentLoader />
+                <SignInButton />
+                <VipBadge />
+                <PrimeButton />
+                <GestAltTest />
+                <CancelButton />
+                <ConfirmButton />
+                <PassMaster />
+                <AntD />
+                <PreciseUI />
+                <Spectrum />
+                <Windmill />
+                <BaseUI />
+              </SuspenseErrorBoundary>
+            </Route>
+            <Route exact path="/aplikacje">
+              <SuspenseErrorBoundary>
+                <DnD />
+                <IsTest />
+                <ReactNil />
+                <UsersList />
+              </SuspenseErrorBoundary>
+            </Route>
+            <Route exact path="/hooks">
+              <SuspenseErrorBoundary>
+                <Resolver />
+                <GetData />
+                <DemoCookie />
+                <DemoLatest />
+                <DemoUseCss />
+              </SuspenseErrorBoundary>
+            </Route>
+            <Route exact path="/wykresy">
+              <SuspenseErrorBoundary>
+                <Victory />
+                <Recharts />
+              </SuspenseErrorBoundary>
+            </Route>
+            <Route exact path="/grafy">
+              <SuspenseErrorBoundary>
+                <AwesomeButtonDemo />
+                {/* <GoJS /> */}
+              </SuspenseErrorBoundary>
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

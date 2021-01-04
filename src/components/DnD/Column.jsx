@@ -60,7 +60,7 @@ export default class Column extends React.Component {
         >
           {(provided, snapshot) => (
             <TaskList
-              innerRef={provided.innerRef}
+              ref={provided.innerRef}
               {...provided.droppableProps}
               isDraggingOver={snapshot.isDraggingOver}
             >

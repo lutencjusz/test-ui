@@ -14,6 +14,14 @@
     background-color: cadetblue;
   }
 
+* {
+  position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 1200px;
+    /*usuwa kropki z listy*/
+}
 .App {
   text-align: center;
 }
@@ -67,4 +75,60 @@
   margin: 1vw;
   padding: 1vw;
   box-shadow: 1px 2px 4px 2px grey;
+}
+
+nav {
+  width: 95%;
+}
+
+ul {
+  min-width: 80px;
+  line-height: 5vh;
+  background-color: #282c34;
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  transition: .3s;
+  flex-basis: 20%;
+}
+
+nav li .a {
+  font-size: 1rem;
+  display: block;
+  color: white;
+  text-align: center;
+  /*rączka obejmuje wtedy wszystko*/
+  text-decoration: none;
+  /* font-family: sans-serif;
+  font-size: 3vh; */
+  transition: .3s;
+}
+
+nav li .a:hover {
+  border-radius: 0px;
+  text-decoration: none;
+  color: white;
+  /* background: #5f9ea0; */
+  border-radius: 8px;
+  background: linear-gradient(225deg, #24282f, #2b2f38);
+  box-shadow:  -9px 9px 18px #22252c, 
+               9px -9px 18px #2e333c;
+
+}
+
+nav li .a:focus {
+  text-decoration: none;
+  color:#61DBFB;
+}
+
+li:hover .a {
+  transform: translate(1px, 2px);
+}
+
+@media (max-width:320px) {
+  ul {
+      flex-direction: column;
+  }
 }
