@@ -76,6 +76,7 @@ export default function SignInButton() {
     <div className="frame">
       <h1>Rsuite</h1>
       <h6>z wykorzystaniem SchemaForm</h6>
+      <hr />
       <Container>
         <Form onChange={(data) => handleChange(data)} />
         <br />
@@ -89,6 +90,7 @@ export default function SignInButton() {
           </Button>
         </ButtonToolbar>
       </Container>
+      <br />
     </div>
   );
 }
