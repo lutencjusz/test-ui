@@ -15,7 +15,6 @@ const AntD = React.lazy(() => import('./components/antd'));
 const DnD = React.lazy(() => import('./components/DnD'));
 const Victory = React.lazy(() => import('./components/victory'));
 const Recharts = React.lazy(() => import('./components/recharts'));
-const Windmill = React.lazy(() => import('./components/windmill'));
 const BaseUI = React.lazy(() => import('./components/baseUI'));
 const PreciseUI = React.lazy(() => import('./components/preciseUI'));
 const IsTest = React.lazy(() => import('./hooks/is'));
@@ -90,7 +89,6 @@ function App() {
                 <AntD />
                 <PreciseUI />
                 <Spectrum />
-                <Windmill />
                 <BaseUI />
               </SuspenseErrorBoundary>
             </Route>

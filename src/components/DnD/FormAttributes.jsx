@@ -53,7 +53,22 @@ export default function FormAttributes(props) {
       borderWidth="2px"
       borderRadius="7px"
       borderType="solid"
-      innerPadding="30px"
+      topElement={
+        <p
+          style={{
+            width: '270px',
+            fontSize: '2rem',
+            lineHeight: '1rem',
+            color: '#007bffa8',
+          }}
+        >
+          Uzupełnij atrybuty
+        </p>
+      }
+      topPosition={0.05}
+      topOffset="7px"
+      topGap="4px"
+      innerPadding="10px"
       rightPosition={0.1}
       rightOffset="22px"
       rightGap="4px"
@@ -64,10 +79,15 @@ export default function FormAttributes(props) {
         noValidate
       >
         <div className="form-row" style={styles.form_groups}>
-          <h4 style={{ marginTop: 20, width: '40vw' }} className="col-md-10">
+          {/* <h4 style={{ marginTop: 20, width: '40vw' }} className="col-md-10">
             Uzupełnij atrybuty
+          </h4> */}
+          <h4
+            style={{ marginTop: 20, width: '40vw' }}
+            className="col-md-10 mb-3"
+          >
+            {taskId}
           </h4>
-          <h6 className="col-md-10 mb-3">{taskId}</h6>
         </div>
 
         {attr[taskId].map((task) => {

@@ -1,8 +1,6 @@
 /* @import '~antd/dist/antd.css'; */
 @import '~antd/dist/antd.dark.css';
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import '~rsuite/dist/styles/rsuite-default.css';
 
 #components-form-demo-control-hooks .ant-btn {
   margin-right: 10vw;
@@ -21,6 +19,7 @@
     list-style: none;
     max-width: 1200px;
     /*usuwa kropki z listy*/
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 .App {
   text-align: center;
