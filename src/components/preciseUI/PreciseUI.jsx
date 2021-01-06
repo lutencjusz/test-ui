@@ -47,8 +47,12 @@ export default function PreciseUI() {
           </div>
           <br />
           <div>
-            <Button type="submit">Zapisz</Button>
-            <Button type="reset">Usuń</Button>
+            <Button className="maxButton" type="submit">
+              Zapisz
+            </Button>
+            <Button className="maxButton" type="reset">
+              Usuń
+            </Button>
           </div>
         </Container>
       </Form>

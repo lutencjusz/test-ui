@@ -17,11 +17,11 @@ export default function StyledContentLoader() {
     <div className="frame">
       <h1>styled-content-loader</h1>
       <br />
-      <p>
+      <h6>
         dodatkowo react-border-wrapper oraz dla porównania
         tiny-skeleton-loader-react <br /> ikonka przez
         @fortawesome/react-fontawesome oraz @fortawesome/free-solid-svg-icons
-      </p>
+      </h6>
       <br />
       <div style={styles.component}>
         <div style={styles.componentItem}>

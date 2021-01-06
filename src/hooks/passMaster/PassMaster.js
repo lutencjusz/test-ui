@@ -70,7 +70,8 @@ const PassMaster = () => {
     <div className="frame">
       <h1>Formularz useForm</h1>
       <h6>
-        kontrola hasła za pomocą "zxcvbn", formatki poprzez react-hook-form
+        kontrola hasła za pomocą "zxcvbn",
+        <br /> formatki poprzez react-hook-form
       </h6>
       <form
         onSubmit={handleSubmit(onSubmit)}

@@ -79,7 +79,7 @@ export default function BaseUI() {
     <div className="frame" style={{ position: 'relative' }}>
       <h1>BaseUI</h1>
       <br />
-      <h4>dodatkowo baseui-final-form</h4>
+      <h6>dodatkowo baseui-final-form</h6>
 
       <StyletronProvider value={engine}>
         <ThemeProvider theme={theme === THEME.light ? LightTheme : DarkTheme}>

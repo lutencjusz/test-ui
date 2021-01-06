@@ -20,6 +20,7 @@
     max-width: 1200px;
     /*usuwa kropki z listy*/
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: calc(7px + 1vw);
 }
 .App {
   text-align: center;
@@ -76,6 +77,11 @@
   box-shadow: 1px 2px 4px 2px grey;
 }
 
+#root div div div.frame h1 {
+  font-size: calc(15px + 2vmin);
+  /* font-size: 2rem; */
+}
+
 nav {
   width: 95%;
 }
@@ -94,7 +100,7 @@ li {
 }
 
 nav li .a {
-  font-size: 1rem;
+  font-size: calc(7px + 1vw);
   display: block;
   color: white;
   text-align: center;
@@ -126,8 +132,17 @@ li:hover .a {
   transform: translate(1px, 2px);
 }
 
+Button.maxButton {
+  max-width: 20%;
+  margin-left: 5%;
+}
+
 @media (max-width:320px) {
   ul {
       flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: row;
   }
 }

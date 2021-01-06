@@ -11,39 +11,51 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   text-align: left;
-  margin-left: 20%;
-  width: 80%;
+  margin-left: 20vw;
+  width: 50vw;
 `;
 
 const { StringType, NumberType } = Schema.Types;
+
+const componentTheme = {
+  style: {
+    width: '50vw',
+  },
+};
+
 const Form = SchemaForm([
   {
     key: 'username',
     type: StringType().isRequired('To pole jest wymagane'),
     label: 'Imię',
+    componentProps: componentTheme,
   },
   {
     key: 'lastName',
     type: StringType().isRequired('To pole jest wymagane'),
     label: 'Nazwisko',
+    componentProps: componentTheme,
   },
   {
     key: 'group',
     type: NumberType().isOneOf([5, 10, 15], 'Może być jeden z `5`, `10`, `15`'),
     label: 'Grupa',
     helpBlock: 'wybierz jedną z 5, 10, 15...',
+    componentProps: componentTheme,
   },
   {
     key: 'email',
     type: StringType().isEmail('Wprowadź ważny email'),
     label: 'Email',
+    componentProps: componentTheme,
   },
   {
     key: 'age',
-    type: NumberType('Please enter a valid number'),
+    type: NumberType('Wprowadź ważny numer'),
     label: 'Age',
     componentClass: InputNumber,
     componentProps: {
+      ...componentTheme,
       autoComplete: 'off',
     },
   },

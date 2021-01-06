@@ -30,7 +30,7 @@ export default class AwesomeButtonDemo extends React.Component {
     return (
       <div className="frame">
         <h1>AwesomeButton</h1>
-        <h4>dodatkowo react-draggable</h4>
+        <h6>dodatkowo react-draggable</h6>
         <br />
         <div style={styles.DraggableFrame}>
           <Draggable

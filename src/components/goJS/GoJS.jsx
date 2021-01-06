@@ -65,7 +65,7 @@ export default function GoJS() {
   return (
     <div className="frame">
       <h1>GoJS</h1>
-      <h4>Wymaga zakupu licencji</h4>
+      <h6>Wymaga zakupu licencji</h6>
       <br />
       <ReactDiagram
         initDiagram={initDiagram}

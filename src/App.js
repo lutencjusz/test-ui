@@ -43,7 +43,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h3 style={{ color: 'white' }}>To jest przykładowa aplikacja</h3>
+          <h2 style={{ color: 'white' }}>To jest przykładowa aplikacja</h2>
           <p>Pokazuje działanie React oraz bibliotek</p>
           <nav>
             <ul>
