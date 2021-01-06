@@ -16,6 +16,7 @@ const FetchDictionary = () => {
   const [page, setPage] = useState(2);
   // eslint-disable-next-line no-unused-vars
   const [recordsPerSite, setRecordsPerSite] = useState(10);
+  const [recordsCollection, setRecordsCollection] = useState('posts');
   const maxRecords = 100;
 
   // A. can put `suspense: true` here
@@ -60,9 +61,11 @@ const FetchDictionary = () => {
     }
   };
 
-  const handlePosts = async (pagePosts) => {
+  const handleRecords = async (collection, pagePosts) => {
     const todos = await get(
-      `/posts?_start=${pagePosts * recordsPerSite}&_limit=${recordsPerSite}`
+      `/${collection}?_start=${
+        pagePosts * recordsPerSite
+      }&_limit=${recordsPerSite}`
     );
     if (response.ok) setTodos(todos);
     if (!response.ok) {
@@ -74,20 +77,14 @@ const FetchDictionary = () => {
       setShow(true);
     }
   };
+  const handlePosts = async (pagePosts) => {
+    setRecordsCollection('posts');
+    handleRecords('posts', pagePosts);
+  };
 
   const handleAlbums = async (pageAlbums) => {
-    const todos = await get(
-      `/albums?_start=${pageAlbums * recordsPerSite}&_limit=${recordsPerSite}`
-    );
-    if (response.ok) setTodos(todos);
-    if (!response.ok) {
-      setToastState({
-        backgroundColor: 'red',
-        title: 'Albums',
-        body: 'Nie udało się pobrać danych.',
-      });
-      setShow(true);
-    }
+    setRecordsCollection('albums');
+    handleRecords('albums', pageAlbums);
   };
 
   const handleUsers = async () => {
@@ -105,7 +102,7 @@ const FetchDictionary = () => {
 
   const handleSetPage = (p) => {
     setPage(p);
-    handlePosts(p - 1);
+    handleRecords(recordsCollection, p - 1);
   };
 
   // componentDidMount
@@ -122,61 +119,65 @@ const FetchDictionary = () => {
         minHeight: '100px',
       }}
     >
-      <hr />
-      {todos.map((todo) => (
-        <div key={todo.id}>{todo.title}</div>
-      ))}
-      <hr />
-      <nav className="d-flex justify-content-center">
-        <ul className="pagination">
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={() => handleSetPage(1)}
-              aria-label="Previous"
-            >
-              <span aria-hidden="true">&laquo;</span>
-              <span className="sr-only">Previous</span>
-            </a>
-          </li>
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={() => handleSetPage(page - 1 < 1 ? 1 : page - 1)}
-            >
-              {page === 1 ? '...' : page - 1}
-            </a>
-          </li>
-          <li className="page-item active">
-            <a className="page-link" onClick={() => handleSetPage(page)}>
-              {page}
-            </a>
-          </li>
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={() =>
-                handleSetPage(
-                  page + 1 > maxRecords / recordsPerSite
-                    ? maxRecords / recordsPerSite
-                    : page + 1
-                )
-              }
-            >
-              {page === maxRecords / recordsPerSite ? '...' : page + 1}
-            </a>
-          </li>
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={() => handleSetPage(maxRecords / recordsPerSite)}
-            >
-              <span aria-hidden="true">&raquo;</span>
-              <span className="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      {todos.length > 0 ? (
+        <div>
+          <hr />
+          {todos.map((todo) => (
+            <div key={todo.id}>{todo.title}</div>
+          ))}
+          <hr />
+          <nav className="d-flex justify-content-center">
+            <ul className="pagination">
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() => handleSetPage(1)}
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">&laquo;</span>
+                  <span className="sr-only">Previous</span>
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() => handleSetPage(page - 1 < 1 ? 1 : page - 1)}
+                >
+                  {page === 1 ? '...' : page - 1}
+                </a>
+              </li>
+              <li className="page-item active">
+                <a className="page-link" onClick={() => handleSetPage(page)}>
+                  {page}
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() =>
+                    handleSetPage(
+                      page + 1 > maxRecords / recordsPerSite
+                        ? maxRecords / recordsPerSite
+                        : page + 1
+                    )
+                  }
+                >
+                  {page === maxRecords / recordsPerSite ? '...' : page + 1}
+                </a>
+              </li>
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  onClick={() => handleSetPage(maxRecords / recordsPerSite)}
+                >
+                  <span aria-hidden="true">&raquo;</span>
+                  <span className="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      ) : null}
       <Toast
         onClose={() => setShow(false)}
         show={show}
@@ -195,10 +196,15 @@ const FetchDictionary = () => {
         </Toast.Header>
         <Toast.Body>{toastState.body}</Toast.Body>
       </Toast>
-      <button className="btn btn-primary" onClick={() => handlePosts(page - 1)}>
+      <button
+        style={{ marginRight: 10 }}
+        className="btn btn-primary"
+        onClick={() => handlePosts(page - 1)}
+      >
         Pobierz Posty
       </button>
       <button
+        style={{ marginRight: 10 }}
         className="btn btn-primary"
         onClick={() => handleAlbums(page - 1)}
       >
