@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import useFetch, { Provider } from 'use-http';
 import { SuspenseErrorBoundary } from '../../components';
@@ -14,6 +13,11 @@ const FetchDictionary = () => {
     title: 'Posts',
     body: 'Nie mogę połączyć się z bazą...',
   });
+  const [page, setPage] = useState(2);
+  // eslint-disable-next-line no-unused-vars
+  const [recordsPerSite, setRecordsPerSite] = useState(10);
+  const maxRecords = 100;
+
   // A. can put `suspense: true` here
   const { get, response } = useFetch({
     cacheLife: 3000,
@@ -56,8 +60,10 @@ const FetchDictionary = () => {
     }
   };
 
-  const handlePosts = async () => {
-    const todos = await get('/posts');
+  const handlePosts = async (pagePosts) => {
+    const todos = await get(
+      `/posts?_start=${pagePosts * recordsPerSite}&_limit=${recordsPerSite}`
+    );
     if (response.ok) setTodos(todos);
     if (!response.ok) {
       setToastState({
@@ -69,8 +75,10 @@ const FetchDictionary = () => {
     }
   };
 
-  const handleAlbums = async () => {
-    const todos = await get('/albums');
+  const handleAlbums = async (pageAlbums) => {
+    const todos = await get(
+      `/albums?_start=${pageAlbums * recordsPerSite}&_limit=${recordsPerSite}`
+    );
     if (response.ok) setTodos(todos);
     if (!response.ok) {
       setToastState({
@@ -95,6 +103,11 @@ const FetchDictionary = () => {
     }
   };
 
+  const handleSetPage = (p) => {
+    setPage(p);
+    handlePosts(p - 1);
+  };
+
   // componentDidMount
   useEffect(() => {
     loadInitialFetch();
@@ -109,9 +122,61 @@ const FetchDictionary = () => {
         minHeight: '100px',
       }}
     >
+      <hr />
       {todos.map((todo) => (
         <div key={todo.id}>{todo.title}</div>
       ))}
+      <hr />
+      <nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          <li className="page-item">
+            <a
+              className="page-link"
+              onClick={() => handleSetPage(1)}
+              aria-label="Previous"
+            >
+              <span aria-hidden="true">&laquo;</span>
+              <span className="sr-only">Previous</span>
+            </a>
+          </li>
+          <li className="page-item">
+            <a
+              className="page-link"
+              onClick={() => handleSetPage(page - 1 < 1 ? 1 : page - 1)}
+            >
+              {page === 1 ? '...' : page - 1}
+            </a>
+          </li>
+          <li className="page-item active">
+            <a className="page-link" onClick={() => handleSetPage(page)}>
+              {page}
+            </a>
+          </li>
+          <li className="page-item">
+            <a
+              className="page-link"
+              onClick={() =>
+                handleSetPage(
+                  page + 1 > maxRecords / recordsPerSite
+                    ? maxRecords / recordsPerSite
+                    : page + 1
+                )
+              }
+            >
+              {page === maxRecords / recordsPerSite ? '...' : page + 1}
+            </a>
+          </li>
+          <li className="page-item">
+            <a
+              className="page-link"
+              onClick={() => handleSetPage(maxRecords / recordsPerSite)}
+            >
+              <span aria-hidden="true">&raquo;</span>
+              <span className="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <Toast
         onClose={() => setShow(false)}
         show={show}
@@ -130,10 +195,13 @@ const FetchDictionary = () => {
         </Toast.Header>
         <Toast.Body>{toastState.body}</Toast.Body>
       </Toast>
-      <button className="btn btn-primary" onClick={handlePosts}>
+      <button className="btn btn-primary" onClick={() => handlePosts(page - 1)}>
         Pobierz Posty
       </button>
-      <button className="btn btn-primary" onClick={handleAlbums}>
+      <button
+        className="btn btn-primary"
+        onClick={() => handleAlbums(page - 1)}
+      >
         Pobierz Albumy
       </button>
       <button className="btn btn-danger" onClick={handleUsers}>
