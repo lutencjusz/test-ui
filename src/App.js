@@ -24,6 +24,7 @@ const GetData = React.lazy(() => import('./hooks/useFetch'));
 const DemoCookie = React.lazy(() => import('./hooks/useCookie'));
 const DemoLatest = React.lazy(() => import('./hooks/useLatest'));
 const DemoUseCss = React.lazy(() => import('./hooks/useCss'));
+const UseReducer = React.lazy(() => import('./hooks/useReducer'));
 const Spectrum = React.lazy(() => import('./components/spectrum'));
 const GoJS = React.lazy(() => import('./components/goJS'));
 const AwesomeButtonDemo = React.lazy(() =>
@@ -107,6 +108,7 @@ function App() {
                 <DemoCookie />
                 <DemoLatest />
                 <DemoUseCss />
+                <UseReducer />
               </SuspenseErrorBoundary>
             </Route>
             <Route exact path="/wykresy">

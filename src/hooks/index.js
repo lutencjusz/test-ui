@@ -5,3 +5,4 @@ export { default as GetData } from './useFetch';
 export { default as DemoCookie } from './useCookie';
 export { default as DemoLatest } from './useLatest';
 export { default as DemoUseCss } from './useCss';
+export { default as UseReducer } from './useReducer';
