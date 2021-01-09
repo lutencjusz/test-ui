@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
+import WbSunnyOutlinedIcon from '@material-ui/icons/WbSunnyOutlined';
+import Paper from '@material-ui/core/Paper';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { SuspenseErrorBoundary } from './components';
+import { styles } from './constaints';
 
-const SignInButton = React.lazy(() => import('./components/rsuite'));
+const MaterialUI = React.lazy(() => import('./components/materialUI'));
+const Rsuite = React.lazy(() => import('./components/rsuite'));
 const VipBadge = React.lazy(() => import('./components/shards-react'));
 const PrimeButton = React.lazy(() => import('./components/primereact'));
 const GestAltTest = React.lazy(() => import('./components/gestalt'));
@@ -34,99 +43,141 @@ const StyledContentLoader = React.lazy(() =>
   import('./components/styledContentLoader')
 );
 const ReactNil = React.lazy(() => import('./components/reactNil'));
-
-//import "bootstrap/dist/css/bootstrap.min.css";
+const darkTheme = {
+  palette: {
+    type: 'dark',
+  },
+};
+const lightTheme = {
+  palette: {
+    type: 'light',
+  },
+};
 
 function App() {
+  const [themeState, setThemeState] = useState(false);
+
+  const icon = useMemo(
+    () =>
+      themeState ? (
+        <WbSunnyOutlinedIcon style={themeState.ThemeButton} />
+      ) : (
+        <Brightness3Icon style={themeState.ThemeButton} />
+      ),
+    [themeState]
+  );
+
+  //const appliedTheme = createMuiTheme(themeState ? darkTheme : lightTheme);
+  const appliedTheme = useMemo(
+    () => createMuiTheme(themeState ? darkTheme : lightTheme),
+    [themeState]
+  );
+
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 style={{ color: 'white' }}>To jest przykładowa aplikacja</h2>
-          <p>Pokazuje działanie React oraz bibliotek</p>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/#/" className="a">
-                  Formularze
-                </Link>
-              </li>
-              <li>
-                <Link to="/aplikacje" className="a">
-                  Aplikacje
-                </Link>
-              </li>
-              <li>
-                <Link to="/hooks" className="a">
-                  Hooks
-                </Link>
-              </li>
-              <li>
-                <Link to="/wykresy" className="a">
-                  Wykresy
-                </Link>
-              </li>
-              <li>
-                <Link to="/grafy" className="a">
-                  Grafy
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <SuspenseErrorBoundary>
-                <StyledContentLoader />
-                <SignInButton />
-                <VipBadge />
-                <PrimeButton />
-                <GestAltTest />
-                <CancelButton />
-                <ConfirmButton />
-                <PassMaster />
-                <AntD />
-                <PreciseUI />
-                <Spectrum />
-                <BaseUI />
-              </SuspenseErrorBoundary>
-            </Route>
-            <Route exact path="/aplikacje">
-              <SuspenseErrorBoundary>
-                <DnD />
-                <IsTest />
-                <ReactNil />
-                <UsersList />
-              </SuspenseErrorBoundary>
-            </Route>
-            <Route exact path="/hooks">
-              <SuspenseErrorBoundary>
-                <Resolver />
-                <GetData />
-                <DemoCookie />
-                <DemoLatest />
-                <DemoUseCss />
-                <UseReducer />
-              </SuspenseErrorBoundary>
-            </Route>
-            <Route exact path="/wykresy">
-              <SuspenseErrorBoundary>
-                <Victory />
-                <Recharts />
-              </SuspenseErrorBoundary>
-            </Route>
-            <Route exact path="/grafy">
-              <SuspenseErrorBoundary>
-                <AwesomeButtonDemo />
-                <GoJS />
-              </SuspenseErrorBoundary>
-            </Route>
-          </Switch>
-        </div>
-      </div>
-    </Router>
+    <ThemeProvider theme={appliedTheme}>
+      <Paper>
+        <Router>
+          {/* Musi być, żeby zadziałała dynamiczna zmiana ThemeProvider */}
+          <div className="App">
+            <header className="App-header">
+              <IconButton
+                edge="end"
+                color="inherit"
+                aria-label="mode"
+                onClick={() => setThemeState(!themeState)}
+                style={styles.ThemeButton}
+                size="small"
+              >
+                {icon}
+              </IconButton>
+              <img src={logo} className="App-logo" alt="logo" />
+              <h2 style={{ color: 'white' }}>To jest przykładowa aplikacja</h2>
+              <p>Pokazuje działanie React oraz bibliotek</p>
+              <nav>
+                <ul>
+                  <li>
+                    <Link to="/#/" className="a">
+                      Formularze
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/aplikacje" className="a">
+                      Aplikacje
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/hooks" className="a">
+                      Hooks
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/wykresy" className="a">
+                      Wykresy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/grafy" className="a">
+                      Grafy
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </header>
+            <div>
+              <Switch>
+                <Route exact path="/">
+                  <SuspenseErrorBoundary>
+                    <StyledContentLoader />
+                    <Rsuite />
+                    <MaterialUI />
+                    <VipBadge />
+                    <PrimeButton />
+                    <GestAltTest />
+                    <CancelButton />
+                    <ConfirmButton />
+                    <PassMaster />
+                    <AntD />
+                    <PreciseUI />
+                    <Spectrum />
+                    <BaseUI />
+                  </SuspenseErrorBoundary>
+                </Route>
+                <Route exact path="/aplikacje">
+                  <SuspenseErrorBoundary>
+                    <DnD />
+                    <IsTest />
+                    <ReactNil />
+                    <UsersList />
+                  </SuspenseErrorBoundary>
+                </Route>
+                <Route exact path="/hooks">
+                  <SuspenseErrorBoundary>
+                    <Resolver />
+                    <GetData />
+                    <DemoCookie />
+                    <DemoLatest />
+                    <DemoUseCss />
+                    <UseReducer />
+                  </SuspenseErrorBoundary>
+                </Route>
+                <Route exact path="/wykresy">
+                  <SuspenseErrorBoundary>
+                    <Victory />
+                    <Recharts />
+                  </SuspenseErrorBoundary>
+                </Route>
+                <Route exact path="/grafy">
+                  <SuspenseErrorBoundary>
+                    <AwesomeButtonDemo />
+                    <GoJS />
+                  </SuspenseErrorBoundary>
+                </Route>
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </Paper>
+    </ThemeProvider>
   );
 }
 

@@ -17,15 +17,15 @@ const styles = {
   },
   formButtonRed: {
     marginRight: '10px',
-    'background-color': 'red',
+    backgroundColor: 'red',
   },
   component: {
     display: 'flex',
-    'justify-content': 'space-around',
-    'flex-wrap': 'wrap',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
   },
   componentItem: {
-    'flex-basis': '40vh',
+    flexBasis: '40vh',
     color: 'cadetblue',
   },
   fontStyle: {
@@ -45,8 +45,8 @@ const styles = {
   DraggableFrame: {
     position: 'relative',
     display: 'flex',
-    'justify-content': 'space-around',
-    'flex-wrap': 'wrap',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
     height: '50vh',
     width: '80%',
     marginLeft: '10%',
@@ -62,6 +62,17 @@ const styles = {
     borderRadius: '2px',
     borderWidth: '2px',
     cursor: 'grab',
+  },
+  ThemeButton: {
+    position: 'fixed',
+    height: '5vmin',
+    width: '5vmin',
+    right: '3vw',
+    top: '2vh',
+    border: '1px solid',
+    color: '#61DBFB',
+    zIndex: '1',
+    outline: 'none',
   },
 };
 

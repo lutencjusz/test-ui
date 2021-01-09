@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Collapse } from 'shards-react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'shards-ui/dist/css/shards.min.css';
+//import 'shards-ui/dist/css/shards.min.css';
 
 export default function VipBadge() {
   const [open, setOpen] = useState(false);

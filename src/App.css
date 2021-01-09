@@ -19,7 +19,7 @@
     list-style: none;
     max-width: 1200px;
     /*usuwa kropki z listy*/
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
     font-size: calc(7px + 1vw);
 }
 .App {
