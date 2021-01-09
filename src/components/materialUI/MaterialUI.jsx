@@ -12,6 +12,15 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '25ch',
     },
+    '& > div.buttons': {
+      width: '100%',
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'start',
+    },
+    '& > div.buttons > *': {
+      margin: theme.spacing(1),
+    },
   },
 }));
 
@@ -102,24 +111,26 @@ export default function MaterialUI() {
           onInput={(e) => setEmail(e.target.value)}
           required={true}
         />
-        <Button
-          type="submit"
-          variant="outlined"
-          color="primary"
-          disabled={submitButtonDisable}
-        >
-          Zatwierdź
-        </Button>
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() => clearForm()}
-        >
-          Usuń
-        </Button>
-        <Button variant="outlined" onClick={() => defaultForm()}>
-          początkowe
-        </Button>
+        <div className="buttons">
+          <Button
+            type="submit"
+            variant="outlined"
+            color="primary"
+            disabled={submitButtonDisable}
+          >
+            Zatwierdź
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => clearForm()}
+          >
+            Usuń
+          </Button>
+          <Button variant="outlined" onClick={() => defaultForm()}>
+            początkowe
+          </Button>
+        </div>
       </form>
     </div>
   );
