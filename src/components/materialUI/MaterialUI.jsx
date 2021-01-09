@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -23,9 +23,9 @@ export default function MaterialUI() {
   const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
 
   const initialValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
+    firstName: 'Michał',
+    lastName: 'Sobieraj',
+    email: 'lutencjusz@email.pl',
   };
 
   const [email, setEmail] = useState(initialValues.email);
@@ -44,16 +44,6 @@ export default function MaterialUI() {
     setEmailError(!Is.email(email));
   }, [email]);
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-    // setEmailError(event.target.value && !Is.email(event.target.value));
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-    //setFirstNameError(Is.empty(event.target.value.trim()));
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(
@@ -61,13 +51,21 @@ export default function MaterialUI() {
     );
   };
 
-  const clearForm = () => {
+  const defaultForm = useCallback(() => {
     setEmail(initialValues.email);
     setFirstName(initialValues.firstName);
     setLastName(initialValues.lastName);
     setFirstNameError(true);
     setEmailError(true);
-  };
+  }, [initialValues]);
+
+  const clearForm = useCallback(() => {
+    setEmail('');
+    setFirstName('');
+    setLastName('');
+    setFirstNameError(true);
+    setEmailError(true);
+  }, [initialValues]);
 
   return (
     <div className="frame">
@@ -84,7 +82,7 @@ export default function MaterialUI() {
           color="primary"
           required={true}
           value={firstName}
-          onInput={(e) => handleFirstNameChange(e)}
+          onInput={(e) => setFirstName(e.target.value)}
           error={firstNameError}
         />
         <TextField
@@ -101,7 +99,7 @@ export default function MaterialUI() {
           color="primary"
           error={emailError}
           value={email}
-          onInput={(e) => handleEmailChange(e)}
+          onInput={(e) => setEmail(e.target.value)}
           required={true}
         />
         <Button
@@ -115,9 +113,12 @@ export default function MaterialUI() {
         <Button
           variant="outlined"
           color="secondary"
-          onClick={(e) => clearForm(e)}
+          onClick={() => clearForm()}
         >
           Usuń
+        </Button>
+        <Button variant="outlined" onClick={() => defaultForm()}>
+          początkowe
         </Button>
       </form>
     </div>
