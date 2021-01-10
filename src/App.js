@@ -17,7 +17,6 @@ const Rsuite = React.lazy(() => import('./components/rsuite'));
 const VipBadge = React.lazy(() => import('./components/shards-react'));
 const PrimeButton = React.lazy(() => import('./components/primereact'));
 const GestAltTest = React.lazy(() => import('./components/gestalt'));
-const UsersList = React.lazy(() => import('./components/reactVirtualized'));
 const CancelButton = React.lazy(() => import('./components/evergreen'));
 const ConfirmButton = React.lazy(() => import('./components/atlaskit'));
 const AntD = React.lazy(() => import('./components/antd'));
@@ -36,6 +35,7 @@ const DemoUseCss = React.lazy(() => import('./hooks/useCss'));
 const UseReducer = React.lazy(() => import('./hooks/useReducer'));
 const Spectrum = React.lazy(() => import('./components/spectrum'));
 const GoJS = React.lazy(() => import('./components/goJS'));
+const ReactAdmin = React.lazy(() => import('./components/reactAdmin'));
 const AwesomeButtonDemo = React.lazy(() =>
   import('./components/awesomeButtonDemo')
 );
@@ -147,7 +147,7 @@ function App() {
                     <DnD />
                     <IsTest />
                     <ReactNil />
-                    <UsersList />
+                    <ReactAdmin />
                   </SuspenseErrorBoundary>
                 </Route>
                 <Route exact path="/hooks">
