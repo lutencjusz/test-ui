@@ -147,7 +147,7 @@ function App() {
                     <DnD />
                     <IsTest />
                     <ReactNil />
-                    <ReactAdmin />
+                    <ReactAdmin theme={appliedTheme} />
                   </SuspenseErrorBoundary>
                 </Route>
                 <Route exact path="/hooks">
