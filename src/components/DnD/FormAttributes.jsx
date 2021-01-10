@@ -56,7 +56,8 @@ export default function FormAttributes(props) {
       topElement={
         <p
           style={{
-            width: '25vw',
+            width: 'calc(70px + 13vw)',
+            maxWidth: '210px',
             lineHeight: '1rem',
             color: '#007bffa8',
           }}
@@ -64,8 +65,8 @@ export default function FormAttributes(props) {
           Uzupełnij atrybuty
         </p>
       }
-      topPosition={0.05}
-      topOffset="7px"
+      topPosition={0.1}
+      topOffset=".5vh"
       topGap="4px"
       innerPadding="5px"
       rightPosition={0.1}
@@ -81,10 +82,7 @@ export default function FormAttributes(props) {
           {/* <h4 style={{ marginTop: 20, width: '40vw' }} className="col-md-10">
             Uzupełnij atrybuty
           </h4> */}
-          <h4
-            style={{ marginTop: '-1vh', width: '40vw' }}
-            className="col-md-10 mb-3"
-          >
+          <h4 style={{ width: '40vw' }} className="col-md-10 mb-3">
             {taskId}
           </h4>
         </div>

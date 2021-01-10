@@ -11,14 +11,14 @@ const Container = styled.div`
   transition: background-color 0.2s ease;
   background-color: ${(props) =>
     props.isDragDisabled
-      ? 'white'
+      ? 'transparent'
       : props.isDragging
       ? 'lightgreen'
       : props.isAttributesEnteredIn &&
         (props.columnId.includes('column-3') ||
           props.columnId.includes('column-2'))
       ? 'lightblue'
-      : 'white'};
+      : 'transparent'};
   border: 1px solid
     ${(props) => (props.isDragDisabled ? 'cadetblue' : 'lightgrey')};
   display: flex;
@@ -28,12 +28,13 @@ const Container = styled.div`
 const Handle = styled.div`
   width: 20px;
   height: 20px;
-  right: 8px;
+  right: -8px;
+  line-height: 20px;
+  color: white;
   background-color: red;
   border-radius: 4px;
   margin-right: 8px;
-  font-size: 12px;
-  color: white;
+  font-size: 16px;
   cursor: pointer;
   z-index: 1;
 `;
