@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   text-align: left;
-  margin-left: 20vw;
+  margin-left: 20%;
   width: 50vw;
 `;
 
@@ -20,6 +20,7 @@ const { StringType, NumberType } = Schema.Types;
 const componentTheme = {
   style: {
     width: '50vw',
+    maxWidth: 600,
   },
 };
 

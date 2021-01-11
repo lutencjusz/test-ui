@@ -50,7 +50,7 @@ export default function Spectrum() {
           theme={defaultTheme}
           colorScheme={customTheme ? 'dark' : 'light'}
           width={'80%'}
-          margin={'10%'}
+          margin={'3% 10%'}
         >
           <Form
             isRequired

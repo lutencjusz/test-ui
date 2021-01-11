@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, TextField, PasswordField } from 'precise-ui';
 import Is from 'is_js';
 import styled from 'styled-components';
@@ -10,9 +10,17 @@ const Container = styled.div`
 `;
 
 export default function PreciseUI() {
+  const initialValues = {
+    firstName: 'Michał',
+  };
+
+  const [firstName, setFirstName] = useState(initialValues.firstName || '');
+  const [lastName, setLastName] = useState(initialValues.lastName || '');
+
   return (
     <div className="frame">
       <h1>Precise UI</h1>
+      <h6>Imię i Nazwisko kontrolowane samodzielnie, pozostałe przez form</h6>
       <br />
       <Form
         onSubmit={(e) => alert(JSON.stringify(e))}
@@ -31,11 +39,21 @@ export default function PreciseUI() {
       >
         <Container>
           <div>
-            <TextField name="firstName" label="Imię" />
+            <TextField
+              value={firstName}
+              onChange={({ value }) => setFirstName(value)}
+              name="firstName"
+              label="Imię"
+            />
           </div>
           <br />
           <div>
-            <TextField name="lastName" label="Nazwisko" />
+            <TextField
+              name="lastName"
+              label="Nazwisko"
+              value={lastName}
+              onChange={({ value }) => setLastName(value)}
+            />
           </div>
           <br />
           <div>
@@ -50,10 +68,11 @@ export default function PreciseUI() {
             <Button className="maxButton" type="submit">
               Zapisz
             </Button>
-            <Button className="maxButton" type="reset">
+            <Button buttonStyle="secondary" className="maxButton" type="reset">
               Usuń
             </Button>
           </div>
+          <br />
         </Container>
       </Form>
     </div>

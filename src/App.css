@@ -17,9 +17,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    max-width: 1200px;
     /*usuwa kropki z listy*/
-    /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
+    max-width: 1200px;
     font-size: calc(7px + 1vw);
 }
 .App {

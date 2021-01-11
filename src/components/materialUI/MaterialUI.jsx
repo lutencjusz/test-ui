@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Is from 'is_js';
@@ -26,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MaterialUI() {
   const classes = useStyles();
+  const [openDialog, setOpenDialog] = useState(false);
 
   const [emailError, setEmailError] = useState(true);
   const [firstNameError, setFirstNameError] = useState(true);
@@ -55,9 +61,7 @@ export default function MaterialUI() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Imię: ${firstName}, Nazwisko: ${lastName}, email: ${event.target[2].value}`
-    );
+    setOpenDialog(true);
   };
 
   const defaultForm = useCallback(() => {
@@ -76,9 +80,34 @@ export default function MaterialUI() {
     setEmailError(true);
   }, [initialValues]);
 
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
+
   return (
     <div className="frame">
       <h1>Material UI</h1>
+      <Dialog
+        open={openDialog}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {'Zatwierdzono formularz'}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Imię: {firstName}, Nazwisko: {lastName}, <br />
+            email: {email}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
       <form
         className={classes.root}
         noValidate
