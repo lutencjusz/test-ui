@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import Task from './Task.jsx';
 import { Droppable } from 'react-beautiful-dnd';
-import { Button } from 'shards-react';
+//import Button from '@material-ui/core/Button';
 import { toaster } from 'evergreen-ui';
 
 const Container = styled.div`
@@ -99,13 +99,13 @@ export default class Column extends React.Component {
         </Droppable>
         {this.props.column.id === 'column-3' ? (
           <ButtonStyle>
-            <Button
-              block
+            <button
+              className="btn btn-primary mb-4"
               disabled={this.state.statusButtonSendDisabled}
               onClick={() => this.sendFinal(this.props.message)}
             >
-              Wyślij
-            </Button>
+              Zatwierdź
+            </button>
           </ButtonStyle>
         ) : null}
       </Container>
