@@ -36,7 +36,7 @@
     "gojs": "^2.1.32",
     "gojs-react": "^1.0.10",
     "is-js": "^0.1.1",
-    "npm": "^7.3.0",
+    "npm": "^7.4.0",
     "postcss": "^8.2.2",
     "precise-ui": "^1.5.1",
     "ra-data-json-server": "^3.11.2",
