@@ -1,5 +1,4 @@
 export { default as SignInButton } from './rsuite';
-export { default as VipBadge } from './shards-react';
 export { default as PrimeButton } from './primereact';
 export { default as GestAltTest } from './gestalt';
 export { default as CancelButton } from './evergreen';

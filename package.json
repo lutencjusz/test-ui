@@ -109,7 +109,6 @@
     "react-transition-group": "^4.4.1",
     "react-use": "^15.3.3",
     "rsuite": "^4.8.0",
-    "shards-react": "^1.0.3",
     "styled-components": "^5.2.1",
     "use-http": "^1.0.13",
     "zxcvbn": "^4.4.2"

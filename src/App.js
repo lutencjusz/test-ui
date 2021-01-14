@@ -14,7 +14,6 @@ import { styles } from './constaints';
 
 const MaterialUI = React.lazy(() => import('./components/materialUI'));
 const Rsuite = React.lazy(() => import('./components/rsuite'));
-const VipBadge = React.lazy(() => import('./components/shards-react'));
 const PrimeButton = React.lazy(() => import('./components/primereact'));
 const GestAltTest = React.lazy(() => import('./components/gestalt'));
 const CancelButton = React.lazy(() => import('./components/evergreen'));
@@ -130,7 +129,6 @@ function App() {
                     <StyledContentLoader />
                     <Rsuite />
                     <MaterialUI />
-                    <VipBadge />
                     <PrimeButton />
                     <GestAltTest />
                     <CancelButton />
