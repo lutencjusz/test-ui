@@ -17,7 +17,6 @@ const Rsuite = React.lazy(() => import('./components/rsuite'));
 const PrimeButton = React.lazy(() => import('./components/primereact'));
 const GestAltTest = React.lazy(() => import('./components/gestalt'));
 const CancelButton = React.lazy(() => import('./components/evergreen'));
-const ConfirmButton = React.lazy(() => import('./components/atlaskit'));
 const AntD = React.lazy(() => import('./components/antd'));
 const DnD = React.lazy(() => import('./components/DnD'));
 const Victory = React.lazy(() => import('./components/victory'));
@@ -132,7 +131,6 @@ function App() {
                     <PrimeButton />
                     <GestAltTest />
                     <CancelButton />
-                    <ConfirmButton />
                     <PassMaster />
                     <AntD />
                     <PreciseUI />
