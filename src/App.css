@@ -19,7 +19,7 @@
     list-style: none;
     /*usuwa kropki z listy*/
     max-width: 1200px;
-    font-size: calc(7px + 1vw);
+    font-size: calc(5px + 2vmin);
 }
 .App {
   text-align: center;
