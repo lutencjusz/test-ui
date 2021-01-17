@@ -9,7 +9,7 @@ import { Growl } from 'primereact/growl';
 import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { AutoComplete } from 'primereact/autocomplete';
-import { Captcha } from 'primereact/captcha';
+//import { Captcha } from 'primereact/captcha';
 import data from './countries';
 
 export default function PrimeButton() {
@@ -41,9 +41,9 @@ export default function PrimeButton() {
     }, 50);
   };
 
-  const showResponse = (response) => {
-    console.log({ response });
-  };
+  // const showResponse = (response) => {
+  //   console.log({ response });
+  // };
 
   const itemTemplate = (item) => {
     return (
@@ -117,10 +117,10 @@ export default function PrimeButton() {
           </span>
         </div>
         <div className="p-field p-col-12">
-          <Captcha
+          {/* <Captcha
             siteKey="6Lf98y8aAAAAAMPK9O3i0_L_OjKbzXOhYjB3EUUY"
             onResponse={showResponse}
-          ></Captcha>
+          ></Captcha> */}
         </div>
         <div className="p-field p-col-3">
           <Button
