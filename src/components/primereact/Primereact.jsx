@@ -9,13 +9,18 @@ import { Growl } from 'primereact/growl';
 import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { AutoComplete } from 'primereact/autocomplete';
+import { Captcha } from 'primereact/captcha';
 import data from './countries';
 
 export default function PrimeButton() {
   const [filteredCountries, setFilteredCountries] = useState(null);
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
-  const [value3, setValue3] = useState([]);
+  const [value3, setValue3] = useState(null);
+
+  // const [errorValue1, setEerrorValue1] = useState(false);
+  // const [errorValue2, setEerrorValue2] = useState(false);
+  // const [errorValue3, setEerrorValue3] = useState(false);
 
   let growl = useRef(null);
 
@@ -34,6 +39,10 @@ export default function PrimeButton() {
       });
       setFilteredCountries(results);
     }, 50);
+  };
+
+  const showResponse = (response) => {
+    console.log({ response });
   };
 
   const itemTemplate = (item) => {
@@ -59,7 +68,7 @@ export default function PrimeButton() {
       </div>
 
       <div className="p-fluid p-formgrid p-grid">
-        <div className="p-field p-col-4 ">
+        <div className="p-field p-col-4 p-d-block">
           <span className="p-float-label">
             <InputText
               id="inputtext"
@@ -80,9 +89,9 @@ export default function PrimeButton() {
           <span className="p-float-label">
             <Calendar
               id="calendar"
+              dateFormat="dd/mm/yy"
               value={value2}
               onChange={(e) => setValue2(e.value)}
-              className="p-invalid"
             />
             <label htmlFor="calendar">Data urodzenia</label>
           </span>
@@ -107,27 +116,17 @@ export default function PrimeButton() {
             </label>
           </span>
         </div>
+        <div className="p-field p-col-12">
+          <Captcha
+            siteKey="6Lf98y8aAAAAAMPK9O3i0_L_OjKbzXOhYjB3EUUY"
+            onResponse={showResponse}
+          ></Captcha>
+        </div>
         <div className="p-field p-col-3">
           <Button
             className="p-button-raised p-button-text"
             type="button"
             label="Zatwierdź"
-            onClick={submit}
-          />
-        </div>
-        <div className="p-field p-col-3">
-          <Button
-            className="p-button-danger p-button-text"
-            type="button"
-            label="Usuń"
-            onClick={submit}
-          />
-        </div>
-        <div className="p-field p-col-3">
-          <Button
-            className="p-button-raised p-button-warning p-button-text"
-            type="button"
-            label="Domyślne"
             onClick={submit}
           />
         </div>
