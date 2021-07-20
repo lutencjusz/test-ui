@@ -105,7 +105,7 @@
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.0.7",
-    "react-native": "^0.63.4",
+    "react-native": "^0.64.1",
     "react-native-passmeter": "0.0.5",
     "react-transition-group": "^4.4.1",
     "react-use": "^15.3.3",
